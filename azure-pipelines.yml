@@ -17,7 +17,7 @@ steps:
   inputs:
     secureFile: deploy_key
   displayName: 'Get the deploy key'
-  
+
 - script: |
     gem install bundler
     bundle install --retry=3 --jobs=4
@@ -25,7 +25,9 @@ steps:
 
 # Pretend to be Arwel for now
 - script:  |
-    - script: |
+    mkdir ~/.ssh && mv $DOWNLOADSECUREFILE_SECUREFILEPATH ~/.ssh/id_rsa
+    chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_rsa
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
     git config --local user.name "Arwel" 
     git config --local user.email "arwel.griffith@gmail.com"
     ./deploy.sh
