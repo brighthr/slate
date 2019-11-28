@@ -19,5 +19,10 @@ steps:
     bundle install --retry=3 --jobs=4
   displayName: 'bundle install'
 
-- script: ./deploy.sh
+# Pretend to be Arwel for now
+- script:  |
+    - script: |
+    git config --local user.name "Arwel" 
+    git config --local user.email "arwel.griffith@gmail.com"
+    ./deploy.sh
   displayName: 'deploy'
