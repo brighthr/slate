@@ -19,5 +19,5 @@ steps:
     bundle install --retry=3 --jobs=4
   displayName: 'bundle install'
 
-- script: deploy.sh
+- script: ./deploy.sh
   displayName: 'deploy'
