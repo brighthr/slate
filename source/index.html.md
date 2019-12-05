@@ -3,12 +3,9 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='mailto:github@brighthr.com'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -19,7 +16,7 @@ search: true
 
 # Introduction
 
-Welcome to the Bright API! You can use our API to access data we hold on you and your company.
+Welcome to the Bright API! You can use our API to access data we hold on you, your subordinates and your company.
 
 We have language bindings in Shell, C#, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
@@ -27,72 +24,64 @@ This example API documentation page was created with [Slate](https://github.com/
 
 # Authentication
 
-> To authorize, use this code:
+> Before you can integratewith our APIs, you must set up your development environment to get OAuth 2.0 client ID and secret credentials for the sandbox and live environments. You exchange these credentials for an access token that authorizes your REST API calls. To test your web and mobile apps, you create sandbox accounts.
 
-```ruby
-require 'kittn'
+To request acces, please contact us <a href='mailto:github@brighthr.com'>here</a>.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+Once you have your client ID, you can request an Access Token.
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
+```chsarp
+some c#
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -v https://someurl/oauth2/token \
+   -H "Accept: application/json" \
+   -u "client_id:secret" \
+   -d "grant_type=client_credentials"
 ```
 
 ```javascript
 const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
+let api = kittn.authorize('secret');
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `secret` with your client key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Once you have the access token you can use it to make API calls by providing it in your headers as in the example.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+```
+curl -v -X GET https://someurl \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer Access-Token"
+```
 
-`Authorization: meowmeowmeow`
+> Make sure to replace `Access-Token` with your client key.
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>Access-Token</code> with your granted access token.
 </aside>
+
+# Locations
+
+## Get Location
+
+## Get All Locations
+
+## Create Location
+
+## Update Location
+
+## Delete Location
 
 # Kittens
 
 ## Get All Kittens
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
 ```shell
 curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -135,30 +124,9 @@ Remember — a happy kitten is an authenticated kitten!
 
 ## Get a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
 ```shell
 curl "http://example.com/api/kittens/2"
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
 ```
 
 > The above command returns JSON structured like this:
@@ -189,31 +157,10 @@ ID | The ID of the kitten to retrieve
 
 ## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
 ```shell
 curl "http://example.com/api/kittens/2"
   -X DELETE
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
 ```
 
 > The above command returns JSON structured like this:
