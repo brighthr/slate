@@ -209,7 +209,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-cd7ec66c.png" class="logo" alt="Logo" />
+      <img src="images/logo-d628da9b.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -273,25 +273,19 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Bright API! You can use our API to access data we hold on you, your subordinates and your company.</p>
 
-<p>We have language bindings in Shell, C#, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>You can view examples in the dark area to the right.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. You can fork it and use it as a base for your own API&#39;s documentation.</p>
+<p>This API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. You can fork it and use it as a base for your own API&#39;s documentation.</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
 <p>Before you can integratewith our APIs, you must set up your development environment to get OAuth 2.0 client ID and secret credentials for the sandbox and live environments. You exchange these credentials for an access token that authorizes your REST API calls. To test your web and mobile apps, you create sandbox accounts.</p>
-</blockquote>
 
 <p>To request acces, please contact us <a href='mailto:github@brighthr.com'>here</a>.</p>
 
 <p>Once you have your client ID, you can request an Access Token.</p>
-<pre class="highlight plaintext"><code>some c#
-</code></pre><pre class="highlight shell tab-shell"><code>curl -v https://someurl/oauth2/token <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -v https://someurl/oauth2/token <span class="se">\</span>
    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
    -u <span class="s2">"client_id:secret"</span> <span class="se">\</span>
    -d <span class="s2">"grant_type=client_credentials"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'secret'</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>Make sure to replace <code>secret</code> with your client key.</p>
@@ -309,7 +303,75 @@
 <aside class="notice">
 You must replace <code>Access-Token</code> with your granted access token.
 </aside>
-<h1 id='locations'>Locations</h1><h2 id='get-location'>Get Location</h2><h2 id='get-all-locations'>Get All Locations</h2><h2 id='create-location'>Create Location</h2><h2 id='update-location'>Update Location</h2><h2 id='delete-location'>Delete Location</h2><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
+<h1 id='locations'>Locations</h1>
+<p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
+<h2 id='get-location'>Get Location</h2>
+<p>Get a single location by using it&#39;s ID.</p>
+<h3 id='permissions'>Permissions</h3>
+<p>All employees for the company a location is part of have permission to view a location. </p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the location</td>
+</tr>
+</tbody></table>
+<h3 id='links'>Links</h3>
+<p>Links will be provided only if the user has sufficient permissions</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Permissions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>edit</td>
+<td>Admin</td>
+<td>URL and method for editing a location</td>
+</tr>
+<tr>
+<td>assign</td>
+<td>Admin</td>
+<td>URL and method for assigning users to a location</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>Admin</td>
+<td>URL and method for deleting a location</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BuildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"method"</span><span class="p">:</span><span class="s2">"PUT"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-all-locations'>Get All Locations</h2><h2 id='create-location'>Create Location</h2><h2 id='update-location'>Update Location</h2><h2 id='delete-location'>Delete Location</h2><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
 <blockquote>
@@ -377,7 +439,7 @@ Remember — a happy kitten is an authenticated kitten!
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -404,7 +466,7 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint deletes a specific kitten.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
