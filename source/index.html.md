@@ -59,30 +59,8 @@ The Location API allows you to fetch or set details about any locations that bel
 
 ## Get Location
 
-Get a single location by using it's ID.
-
-### Permissions
-
-All employees for the company a location is part of have permission to view a location. 
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the location
-
-### Links
-
-Links will be provided only if the user has sufficient permissions
-
-Parameter | Permissions | Description
---------- | ----------- | -----------
-edit | Admin | URL and method for editing a location
-assign | Admin | URL and method for assigning users to a location 
-delete | Admin | URL and method for deleting a location
-
 ```shell
-curl "http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"
+curl "http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -107,6 +85,34 @@ curl "http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"
     }
   }
 ```
+
+Get a single location by using it's ID.
+
+### Permissions
+
+All employees for the company a location is part of have permission to view a location. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the location
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+deleted | false | If set to true, the result will also include locations that have been marked as deleted.
+
+### Links
+
+Links will be provided only if the user has sufficient permissions
+
+Parameter | Permissions | Description
+--------- | ----------- | -----------
+edit | Admin | URL and method for editing a location
+assign | Admin | URL and method for assigning users to a location 
+delete | Admin | URL and method for deleting a location
 
 ## Get All Locations
 
