@@ -18,33 +18,23 @@ search: true
 
 Welcome to the Bright API! You can use our API to access data we hold on you, your subordinates and your company.
 
-We have language bindings in Shell, C#, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+You can view examples in the dark area to the right.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). You can fork it and use it as a base for your own API's documentation.
+This API documentation page was created with [Slate](https://github.com/lord/slate). You can fork it and use it as a base for your own API's documentation.
 
 # Authentication
 
-> Before you can integratewith our APIs, you must set up your development environment to get OAuth 2.0 client ID and secret credentials for the sandbox and live environments. You exchange these credentials for an access token that authorizes your REST API calls. To test your web and mobile apps, you create sandbox accounts.
+Before you can integratewith our APIs, you must set up your development environment to get OAuth 2.0 client ID and secret credentials for the sandbox and live environments. You exchange these credentials for an access token that authorizes your REST API calls. To test your web and mobile apps, you create sandbox accounts.
 
 To request acces, please contact us <a href='mailto:github@brighthr.com'>here</a>.
 
 Once you have your client ID, you can request an Access Token.
-
-```chsarp
-some c#
-```
 
 ```shell
 curl -v https://someurl/oauth2/token \
    -H "Accept: application/json" \
    -u "client_id:secret" \
    -d "grant_type=client_credentials"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('secret');
 ```
 
 > Make sure to replace `secret` with your client key.
@@ -65,7 +55,58 @@ You must replace <code>Access-Token</code> with your granted access token.
 
 # Locations
 
+The Location API allows you to fetch or set details about any locations that belong to your company.
+
 ## Get Location
+
+Get a single location by using it's ID.
+
+### Permissions
+
+All employees for the company a location is part of have permission to view a location. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the location
+
+### Links
+
+Links will be provided only if the user has sufficient permissions
+
+Parameter | Permissions | Description
+--------- | ----------- | -----------
+edit | Admin | URL and method for editing a location
+assign | Admin | URL and method for assigning users to a location 
+delete | Admin | URL and method for deleting a location
+
+```shell
+curl "http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer Access-Token"
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+  {
+    "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
+    "LocationName": "fac51",
+    "BuildingName": "The Hacienda", 
+    "Street": "15 Whitworth Street West",
+    "Town": "Manchester",
+    "County": "Greater Manchester",
+    "Country": "United Kingdom",
+    "Postcode": "M1 5DD" ,
+    "_links":{
+      "edit":{
+        "href":"https://example.com/employee/44436/contract",
+        "method":"PUT"
+      }
+    }
+  }
+```
 
 ## Get All Locations
 
@@ -80,7 +121,7 @@ You must replace <code>Access-Token</code> with your granted access token.
 ## Get All Kittens
 
 ```shell
-curl "http://example.com/api/kittens"
+curl "http://example.com/api/kittens/"
   -H "Authorization: meowmeowmeow"
 ```
 
