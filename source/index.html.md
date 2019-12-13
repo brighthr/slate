@@ -59,6 +59,12 @@ The Location API allows you to fetch or set details about any locations that bel
 
 ## Get Location
 
+Get a single location by using it's ID.
+
+### HTTP Request
+
+`GET http://example.com/api/location/<ID>`
+
 ```shell
 curl "http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"
   -H "Content-Type: application/json" \
@@ -85,8 +91,6 @@ curl "http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?delet
     }
   }
 ```
-
-Get a single location by using it's ID.
 
 ### Permissions
 
