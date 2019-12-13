@@ -305,7 +305,31 @@ You must replace <code>Access-Token</code> with your granted access token.
 </aside>
 <h1 id='locations'>Locations</h1>
 <p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
-<h2 id='get-location'>Get Location</h2>
+<h2 id='get-location'>Get Location</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BuildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"method"</span><span class="p">:</span><span class="s2">"PUT"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Get a single location by using it&#39;s ID.</p>
 <h3 id='permissions'>Permissions</h3>
 <p>All employees for the company a location is part of have permission to view a location. </p>
@@ -319,6 +343,20 @@ You must replace <code>Access-Token</code> with your granted access token.
 <tr>
 <td>ID</td>
 <td>The ID of the location</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deleted</td>
+<td>false</td>
+<td>If set to true, the result will also include locations that have been marked as deleted.</td>
 </tr>
 </tbody></table>
 <h3 id='links'>Links</h3>
@@ -347,31 +385,7 @@ You must replace <code>Access-Token</code> with your granted access token.
 <td>URL and method for deleting a location</td>
 </tr>
 </tbody></table>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>Access-Token</code> with your client key.
-The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"LocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"BuildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"method"</span><span class="p">:</span><span class="s2">"PUT"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='get-all-locations'>Get All Locations</h2><h2 id='create-location'>Create Location</h2><h2 id='update-location'>Update Location</h2><h2 id='delete-location'>Delete Location</h2><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/"</span>
+<h2 id='get-all-locations'>Get All Locations</h2><h2 id='create-location'>Create Location</h2><h2 id='update-location'>Update Location</h2><h2 id='delete-location'>Delete Location</h2><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
 <blockquote>
@@ -397,7 +411,7 @@ The above command returns JSON structured like this:</p>
 <p>This endpoint retrieves all kittens.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
