@@ -120,6 +120,67 @@ delete | Admin | URL and method for deleting a location
 
 ## Get All Locations
 
+Get all locations that are part of the logged in user's company.
+
+### HTTP Request
+
+`GET http://example.com/api/location/`
+
+```shell
+curl "http://example.com/api/location/?deleted=true"
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer Access-Token"
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
+    "LocationName": "fac51",
+    "BuildingName": "The Hacienda", 
+    "Street": "15 Whitworth Street West",
+    "Town": "Manchester",
+    "County": "Greater Manchester",
+    "Country": "United Kingdom",
+    "Postcode": "M1 5DD" ,
+    "_links":{
+      "edit":{
+        "href":"https://example.com/employee/44436/contract",
+        "method":"PUT"
+      }
+    }
+  }
+]
+```
+
+### Permissions
+
+All employees for the company a location is part of have permission to view a location. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the location
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+deleted | false | If set to true, the result will also include locations that have been marked as deleted.
+
+### Links
+
+Links will be provided only if the user has sufficient permissions
+
+Parameter | Permissions | Description
+--------- | ----------- | -----------
+edit | Admin | URL and method for editing a location
+assign | Admin | URL and method for assigning users to a location 
+delete | Admin | URL and method for deleting a location
+
 ## Create Location
 
 ## Update Location
