@@ -234,6 +234,9 @@
                     <a href="#get-all-locations" class="toc-h2 toc-link" data-title="Get All Locations">Get All Locations</a>
                   </li>
                   <li>
+                    <a href="#get-location-for-employee" class="toc-h2 toc-link" data-title="Get Location For Employee">Get Location For Employee</a>
+                  </li>
+                  <li>
                     <a href="#create-location" class="toc-h2 toc-link" data-title="Create Location">Create Location</a>
                   </li>
                   <li>
@@ -277,7 +280,7 @@
 
 <p>This API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. You can fork it and use it as a base for your own API&#39;s documentation.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>Before you can integratewith our APIs, you must set up your development environment to get OAuth 2.0 client ID and secret credentials for the sandbox and live environments. You exchange these credentials for an access token that authorizes your REST API calls. To test your web and mobile apps, you create sandbox accounts.</p>
+<p>Before you can integrate with our APIs, you must set up your development environment to get OAuth 2.0 client ID and secret credentials for the sandbox and live environments. You exchange these credentials for an access token that authorizes your REST API calls. To test your web and mobile apps, you create sandbox accounts.</p>
 
 <p>To request acces, please contact us <a href='mailto:github@brighthr.com'>here</a>.</p>
 
@@ -325,7 +328,11 @@ The above command returns JSON structured like this:</p>
     </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
@@ -408,7 +415,11 @@ The above command returns JSON structured like this:</p>
     </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
@@ -471,6 +482,92 @@ The above command returns JSON structured like this:</p>
 <td>URL and method for deleting a location</td>
 </tr>
 </tbody></table>
+<h2 id='get-location-for-employee'>Get Location For Employee</h2>
+<p>Gets a list of locations an employee is assigned to based on their ID</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://example.com/api/location/employee/&lt;ID&gt;</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/location/employee/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2?deleted=true"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BuildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"method"</span><span class="p">:</span><span class="s2">"PUT"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='permissions-3'>Permissions</h3>
+<p>All employees for the company a location is part of have permission to view a location. </p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the employee</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deleted</td>
+<td>false</td>
+<td>If set to true, the result will also include locations that have been marked as deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='links-3'>Links</h3>
+<p>Links will be provided only if the user has sufficient permissions</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Permissions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>edit</td>
+<td>Admin</td>
+<td>URL and method for editing a location</td>
+</tr>
+<tr>
+<td>assign</td>
+<td>Admin</td>
+<td>URL and method for assigning users to a location</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>Admin</td>
+<td>URL and method for deleting a location</td>
+</tr>
+</tbody></table>
 <h2 id='create-location'>Create Location</h2><h2 id='update-location'>Update Location</h2><h2 id='delete-location'>Delete Location</h2><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -495,9 +592,9 @@ The above command returns JSON structured like this:</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -537,9 +634,9 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint retrieves a specific kitten.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -564,9 +661,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
