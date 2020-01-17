@@ -57,16 +57,21 @@ You must replace <code>Access-Token</code> with your granted access token.
 
 The Location API allows you to fetch or set details about any locations that belong to your company.
 
+### URL for Dev and Production
+
+Development: https://bright-dev.azurefd.net/api/location
+Production: https://bright-prod.azurefd.net/api/location
+
 ## Get Location
 
 Get a single location by using it's ID.
 
 ### HTTP Request
 
-`GET http://example.com/api/location/<ID>`
+`GET https://bright-dev.azurefd.net/api/location/<ID>`
 
 ```shell
-curl "http://example.com/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"
+curl "https://bright-dev.azurefd.net/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -128,10 +133,10 @@ Get all locations that are part of the logged in user's company.
 
 ### HTTP Request
 
-`GET http://example.com/api/location/`
+`GET https://bright-dev.azurefd.net/api/location/`
 
 ```shell
-curl "http://example.com/api/location/?deleted=true"
+curl "https://bright-dev.azurefd.net/api/location/?deleted=true"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -195,10 +200,10 @@ Gets a list of locations an employee is assigned to based on their ID
 
 ### HTTP Request
 
-`GET http://example.com/api/location/employee/<ID>`
+`GET https://bright-dev.azurefd.net/api/location/employee/<ID>`
 
 ```shell
-curl "http://example.com/api/location/employee/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2?deleted=true"
+curl "https://bright-dev.azurefd.net/api/location/employee/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2?deleted=true"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -260,7 +265,7 @@ Creates a location as part of the company the logged in user is part of.
 
 ### HTTP Request
 
-`POST http://example.com/api/location/`
+`POST https://bright-dev.azurefd.net/api/location/`
 
 ```shell
 curl --location --request POST 'http://localhost:7071/api/location' \
@@ -299,7 +304,7 @@ Updates the address of a location. It will respond with a Bad Request should the
 
 ### HTTP Request
 
-`PUT http://example.com/api/location/<ID>`
+`PUT https://bright-dev.azurefd.net/api/location/<ID>`
 
 ```shell
 curl --location --request PUT 'http://localhost:7071/api/location/' \
@@ -344,10 +349,10 @@ Delete a location. All employees assigned to that location will become unassigne
 
 ### HTTP Request
 
-`DELETE http://example.com/api/location/<ID>`
+`DELETE https://bright-dev.azurefd.net/api/location/<ID>`
 
 ```shell
-curl --request DELETE "http://example.com/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"
+curl --request DELETE "https://bright-dev.azurefd.net/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -364,3 +369,60 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the location
 
+## Delete Location
+
+Delete a location. All employees assigned to that location will become unassigned.
+
+### HTTP Request
+
+`DELETE https://bright-dev.azurefd.net/api/location/<ID>`
+
+```shell
+curl --request DELETE "https://bright-dev.azurefd.net/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer Access-Token"
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Only users with the Admin role have permissions to delete a location.
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the location
+
+## Assign Employees
+
+Assigns a collection of employees to a location. Any users who were previously assigned, but are not present in the new list of assigned employees will be unassigned
+
+### HTTP Request
+
+`PUT https://bright-dev.azurefd.net/api/location/<ID>/assign`
+
+```shell
+curl --location --request PUT 'http://localhost:7071/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2/assign' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '  {
+      "employees":[
+        "A82DEE40-7163-4CCE-9E07-4DD4C2884FC2",
+        "ABCDEE40-7163-4CCE-9E07-4DD4C288ABCD"
+      ]
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Only users with the Admin role have permissions to assign to a location.
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the location
