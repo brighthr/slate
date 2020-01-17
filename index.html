@@ -257,6 +257,17 @@
               </ul>
           </li>
           <li>
+            <a href="#reports" class="toc-h1 toc-link" data-title="Reports">Reports</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#url-for-dev-and-production-2" class="toc-h2 toc-link" data-title="URL for Dev and Production">URL for Dev and Production</a>
+                  </li>
+                  <li>
+                    <a href="#timesheet" class="toc-h2 toc-link" data-title="Timesheet">Timesheet</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -770,6 +781,54 @@ The above command returns JSON structured like this:</p>
 <td>The ID of the location</td>
 </tr>
 </tbody></table>
+<h1 id='reports'>Reports</h1>
+<p>The Report API allows you to generate reports for your company.</p>
+<h3 id='url-for-dev-and-production-2'>URL for Dev and Production</h3>
+<p>Development: https://bright-dev.azurefd.net/api/report</p>
+
+<p>Production: https://bright-prod.azurefd.net/api/report</p>
+<h2 id='timesheet'>Timesheet</h2>
+<p>Get a timesheet report for your team for the selected date range, with the option to filter by specific employees.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://bright-dev.azurefd.net/api/report/timesheet</code></p>
+
+<p><code>GET https://bright-prod.azurefd.net/api/report/timesheet</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'https://bright-dev.azurefd.net/api/report/timesheet'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'  {
+      "Start": "2020-01-01 00:00:00.0000000 +00:00",
+        "End": "2020-01-08 00:00:00.0000000 +00:00",
+        "FilterUserIds": ["A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"]
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.</p>
+</blockquote>
+<h3 id='permissions-9'>Permissions</h3>
+<p>All employees have permission to request a report. If <code>FilterUserIds</code> is not null, it must only contain guids for users which are subordinates of the requester, or the requester themself.</p>
+<h3 id='body-parameters-3'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Start</td>
+<td>Start date and time in ISO 8601 format</td>
+</tr>
+<tr>
+<td>End</td>
+<td>End date and time in ISO 8601 format</td>
+</tr>
+<tr>
+<td>FilterUserIds (Optional)</td>
+<td>List of UserGuids to filter by, or null to get a timesheet for all subordinates and the requester</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<p>A 200 containing a .csv file stream.</p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
