@@ -248,20 +248,6 @@
               </ul>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -568,74 +554,82 @@ The above command returns JSON structured like this:</p>
 <td>URL and method for deleting a location</td>
 </tr>
 </tbody></table>
-<h2 id='create-location'>Create Location</h2><h2 id='update-location'>Update Location</h2><h2 id='delete-location'>Delete Location</h2><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id='create-location'>Create Location</h2>
+<p>Creates a location as part of the company the logged in user is part of.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST http://example.com/api/location/</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://localhost:7071/api/location'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'  {
+      "LocationName": "fac51",
+      "BuildingName": "The Hacienda", 
+      "Street": "15 Whitworth Street West",
+      "Town": "Manchester",
+      "County": "Greater Manchester",
+      "Country": "United Kingdom",
+      "Postcode": "M1 5DD"
+    }'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Make sure to replace <code>Access-Token</code> with your client key.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='permissions-4'>Permissions</h3>
+<p>Only users with the Admin role have permissions to create a location.</p>
+<h3 id='body-parameters'>Body parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>LocationName</td>
+<td>Unique name for the location</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>BuildingName</td>
+<td>Building name</td>
+</tr>
+<tr>
+<td>Street</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td>Town</td>
+<td>Name of the town or city</td>
+</tr>
+<tr>
+<td>County</td>
+<td>One of a set list of counties found here (TODO)...</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>One of a set list of countries found here (TODO)...</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id='update-location'>Update Location</h2>
+<p>Updates the address of a location. It will respond with a Bad Request should the jurisdiction of the location change and there are employees assigned to it. A jurisdiction will change if a change in county or country impacts the legislative jurisdiction. A list of jurisdictions and their associated countries and counties can be found here (TODO)...</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PUT http://example.com/api/location/&lt;ID&gt;</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'http://localhost:7071/api/location/'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'  {
+      "LocationName": "fac51",
+      "BuildingName": "The Hacienda", 
+      "Street": "15 Whitworth Street West",
+      "Town": "Manchester",
+      "County": "Greater Manchester",
+      "Country": "United Kingdom",
+      "Postcode": "M1 5DD"
+    }'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Make sure to replace <code>Access-Token</code> with your client key.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='permissions-5'>Permissions</h3>
+<p>Only users with the Admin role have permissions to update a location.</p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -645,24 +639,55 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>The ID of the location</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h3 id='body-parameters-2'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LocationName</td>
+<td>Unique name for the location</td>
+</tr>
+<tr>
+<td>BuildingName</td>
+<td>Building name</td>
+</tr>
+<tr>
+<td>Street</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td>Town</td>
+<td>Name of the town or city</td>
+</tr>
+<tr>
+<td>County</td>
+<td>One of a set list of counties found here...</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>One of a set list of countries found here...</td>
+</tr>
+</tbody></table>
+<h2 id='delete-location'>Delete Location</h2>
+<p>Delete a location. All employees assigned to that location will become unassigned.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE http://example.com/api/location/&lt;ID&gt;</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s2">"http://example.com/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='permissions-6'>Permissions</h3>
+<p>Only users with the Admin role have permissions to create a location.</p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -672,7 +697,7 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>The ID of the location</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
