@@ -256,116 +256,111 @@ delete | Admin | URL and method for deleting a location
 
 ## Create Location
 
+Creates a location as part of the company the logged in user is part of.
+
+### HTTP Request
+
+`POST http://example.com/api/location/`
+
+```shell
+curl --location --request POST 'http://localhost:7071/api/location' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '  {
+      "LocationName": "fac51",
+      "BuildingName": "The Hacienda", 
+      "Street": "15 Whitworth Street West",
+      "Town": "Manchester",
+      "County": "Greater Manchester",
+      "Country": "United Kingdom",
+      "Postcode": "M1 5DD"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+
+### Permissions
+
+Only users with the Admin role have permissions to create a location.
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+LocationName | Unique name for the location
+BuildingName | Building name
+Street | Street name
+Town | Name of the town or city
+County | One of a set list of counties found here (TODO)...
+Country | One of a set list of countries found here (TODO)...
+
 ## Update Location
+
+Updates the address of a location. It will respond with a Bad Request should the jurisdiction of the location change and there are employees assigned to it. A jurisdiction will change if a change in county or country impacts the legislative jurisdiction. A list of jurisdictions and their associated countries and counties can be found here (TODO)...
+
+### HTTP Request
+
+`PUT http://example.com/api/location/<ID>`
+
+```shell
+curl --location --request PUT 'http://localhost:7071/api/location/' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '  {
+      "LocationName": "fac51",
+      "BuildingName": "The Hacienda", 
+      "Street": "15 Whitworth Street West",
+      "Town": "Manchester",
+      "County": "Greater Manchester",
+      "Country": "United Kingdom",
+      "Postcode": "M1 5DD"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+
+### Permissions
+
+Only users with the Admin role have permissions to update a location.
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the location
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+LocationName | Unique name for the location
+BuildingName | Building name
+Street | Street name
+Town | Name of the town or city
+County | One of a set list of counties found here...
+Country | One of a set list of countries found here...
 
 ## Delete Location
 
-# Kittens
-
-## Get All Kittens
-
-```shell
-curl "http://example.com/api/kittens/"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
+Delete a location. All employees assigned to that location will become unassigned.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
+`DELETE http://example.com/api/location/<ID>`
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl --request DELETE "http://example.com/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer Access-Token"
 ```
-
+> Make sure to replace `Access-Token` with your client key.
 > The above command returns JSON structured like this:
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
+### Permissions
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
+Only users with the Admin role have permissions to create a location.
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+ID | The ID of the location
 
