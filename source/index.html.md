@@ -59,7 +59,7 @@ The Location API allows you to fetch or set details about any locations that bel
 
 ### URL for Dev and Production
 
-Development: https://bright-dev.azurefd.net/api/location  
+Development: https://bright-dev.azurefd.net/api/location  \
 Production: https://bright-prod.azurefd.net/api/location
 
 ## Get Location
