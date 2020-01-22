@@ -59,7 +59,7 @@ The Location API allows you to fetch or set details about any locations that bel
 
 ### URL for Dev and Production
 
-Development: https://bright-dev.azurefd.net/api/location
+Development: https://bright-dev.azurefd.net/api/location  
 Production: https://bright-prod.azurefd.net/api/location
 
 ## Get Location
@@ -342,32 +342,6 @@ Street | Street name
 Town | Name of the town or city
 County | One of a set list of counties found here...
 Country | One of a set list of countries found here...
-
-## Delete Location
-
-Delete a location. All employees assigned to that location will become unassigned.
-
-### HTTP Request
-
-`DELETE https://bright-dev.azurefd.net/api/location/<ID>`
-
-```shell
-curl --request DELETE "https://bright-dev.azurefd.net/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer Access-Token"
-```
-> Make sure to replace `Access-Token` with your client key.
-> The above command returns JSON structured like this:
-
-### Permissions
-
-Only users with the Admin role have permissions to create a location.
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the location
 
 ## Delete Location
 
