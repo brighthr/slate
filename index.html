@@ -249,9 +249,6 @@
                     <a href="#delete-location" class="toc-h2 toc-link" data-title="Delete Location">Delete Location</a>
                   </li>
                   <li>
-                    <a href="#delete-location-2" class="toc-h2 toc-link" data-title="Delete Location">Delete Location</a>
-                  </li>
-                  <li>
                     <a href="#assign-employees" class="toc-h2 toc-link" data-title="Assign Employees">Assign Employees</a>
                   </li>
               </ul>
@@ -315,7 +312,7 @@ You must replace <code>Access-Token</code> with your granted access token.
 <h1 id='locations'>Locations</h1>
 <p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
 <h3 id='url-for-dev-and-production'>URL for Dev and Production</h3>
-<p>Development: https://bright-dev.azurefd.net/api/location
+<p>Development: https://bright-dev.azurefd.net/api/location  \
 Production: https://bright-prod.azurefd.net/api/location</p>
 <h2 id='get-location'>Get Location</h2>
 <p>Get a single location by using it&#39;s ID.</p>
@@ -710,34 +707,8 @@ The above command returns JSON structured like this:</p>
 The above command returns JSON structured like this:</p>
 </blockquote>
 <h3 id='permissions-6'>Permissions</h3>
-<p>Only users with the Admin role have permissions to create a location.</p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the location</td>
-</tr>
-</tbody></table>
-<h2 id='delete-location-2'>Delete Location</h2>
-<p>Delete a location. All employees assigned to that location will become unassigned.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>DELETE https://bright-dev.azurefd.net/api/location/&lt;ID&gt;</code></p>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s2">"https://bright-dev.azurefd.net/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>Access-Token</code> with your client key.
-The above command returns JSON structured like this:</p>
-</blockquote>
-<h3 id='permissions-7'>Permissions</h3>
 <p>Only users with the Admin role have permissions to delete a location.</p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -751,7 +722,7 @@ The above command returns JSON structured like this:</p>
 </tbody></table>
 <h2 id='assign-employees'>Assign Employees</h2>
 <p>Assigns a collection of employees to a location. Any users who were previously assigned, but are not present in the new list of assigned employees will be unassigned</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>PUT https://bright-dev.azurefd.net/api/location/&lt;ID&gt;/assign</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'http://localhost:7071/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2/assign'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -767,9 +738,9 @@ The above command returns JSON structured like this:</p>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns JSON structured like this:</p>
 </blockquote>
-<h3 id='permissions-8'>Permissions</h3>
+<h3 id='permissions-7'>Permissions</h3>
 <p>Only users with the Admin role have permissions to assign to a location.</p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -789,7 +760,7 @@ The above command returns JSON structured like this:</p>
 <p>Production: https://bright-prod.azurefd.net/api/report</p>
 <h2 id='timesheet'>Timesheet</h2>
 <p>Generate a timesheet report for your team for the selected date range, with the option to filter by specific employees.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST https://bright-dev.azurefd.net/api/report/timesheet</code></p>
 
 <p><code>POST https://bright-prod.azurefd.net/api/report/timesheet</code></p>
@@ -805,7 +776,7 @@ The above command returns JSON structured like this:</p>
 <blockquote>
 <p>Make sure to replace <code>Access-Token</code> with your client key.</p>
 </blockquote>
-<h3 id='permissions-9'>Permissions</h3>
+<h3 id='permissions-8'>Permissions</h3>
 <p>All employees have permission to request a report. If <code>FilterUserIds</code> is not null, it must only contain guids for users which are subordinates of the requester, or the requester themself.</p>
 <h3 id='body-parameters-3'>Body parameters</h3>
 <table><thead>
