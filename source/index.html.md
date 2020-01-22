@@ -400,3 +400,51 @@ Only users with the Admin role have permissions to assign to a location.
 Parameter | Description
 --------- | -----------
 ID | The ID of the location
+
+# Reports
+
+The Report API allows you to generate reports for your company.
+
+### URL for Dev and Production
+
+Development: https://bright-dev.azurefd.net/api/report
+
+Production: https://bright-prod.azurefd.net/api/report
+
+## Timesheet
+
+Generate a timesheet report for your team for the selected date range, with the option to filter by specific employees.
+
+### HTTP Request
+
+`POST https://bright-dev.azurefd.net/api/report/timesheet`
+
+`POST https://bright-prod.azurefd.net/api/report/timesheet`
+
+```shell
+  curl --location --request POST 'https://bright-dev.azurefd.net/api/report/timesheet' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '  {
+      "Start": "2020-01-01 00:00:00.0000000 +00:00",
+      "End": "2020-01-08 00:00:00.0000000 +00:00",
+      "FilterUserIds": ["A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"]
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+
+### Permissions
+
+All employees have permission to request a report. If `FilterUserIds` is not null, it must only contain guids for users which are subordinates of the requester, or the requester themself.
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+Start | Start date and time in ISO 8601 format
+End | End date and time in ISO 8601 format
+FilterUserIds (Optional) | List of UserGuids to filter by, or null to get a timesheet for all subordinates and the requester
+
+### Response
+
+A 200 containing a .csv file stream.
