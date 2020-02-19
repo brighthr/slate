@@ -407,9 +407,9 @@ The Report API allows you to generate reports for your company.
 
 ### URL for Dev and Production
 
-Development: https://bright-dev.azurefd.net/api/report
+Development: https://bright-api-sand.azurefd.net/v1/report
 
-Production: https://bright-prod.azurefd.net/api/report
+Production: https://bright-api-prod.azurefd.net/v1/report
 
 ## Timesheet
 
@@ -417,9 +417,9 @@ Generate a timesheet report for your team for the selected date range, with the 
 
 ### HTTP Request
 
-`POST https://bright-dev.azurefd.net/api/report/timesheet`
+`POST https://bright-api-sand.azurefd.net/v1/report/timesheet`
 
-`POST https://bright-prod.azurefd.net/api/report/timesheet`
+`POST https://bright-api-prod.azurefd.net/v1/report/timesheet`
 
 ```shell
   curl --location --request POST 'https://bright-dev.azurefd.net/api/report/timesheet' \
