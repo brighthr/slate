@@ -755,15 +755,15 @@ The above command returns JSON structured like this:</p>
 <h1 id='reports'>Reports</h1>
 <p>The Report API allows you to generate reports for your company.</p>
 <h3 id='url-for-dev-and-production-2'>URL for Dev and Production</h3>
-<p>Development: https://bright-dev.azurefd.net/api/report</p>
+<p>Development: https://bright-api-sand.azurefd.net/v1/report</p>
 
-<p>Production: https://bright-prod.azurefd.net/api/report</p>
+<p>Production: https://bright-api-prod.azurefd.net/v1/report</p>
 <h2 id='timesheet'>Timesheet</h2>
 <p>Generate a timesheet report for your team for the selected date range, with the option to filter by specific employees.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>POST https://bright-dev.azurefd.net/api/report/timesheet</code></p>
+<p><code>POST https://bright-api-sand.azurefd.net/v1/report/timesheet</code></p>
 
-<p><code>POST https://bright-prod.azurefd.net/api/report/timesheet</code></p>
+<p><code>POST https://bright-api-prod.azurefd.net/v1/report/timesheet</code></p>
 <pre class="highlight shell tab-shell"><code>  curl --location --request POST <span class="s1">'https://bright-dev.azurefd.net/api/report/timesheet'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
