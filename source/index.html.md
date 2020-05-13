@@ -59,8 +59,8 @@ The Location API allows you to fetch or set details about any locations that bel
 
 ### URL for Dev and Production
 
-Development: https://bright-dev.azurefd.net/api/location  \
-Production: https://bright-prod.azurefd.net/api/location
+Development: https://sandbox-api.brighthr.com/v1/location  \
+Production: https://api.brighthr.com/v1/location
 
 ## Get Location
 
@@ -68,10 +68,10 @@ Get a single location by using it's ID.
 
 ### HTTP Request
 
-`GET https://bright-dev.azurefd.net/api/location/<ID>`
+`GET https://sandbox-api.brighthr.com/v1/location/<ID>`
 
 ```shell
-curl "https://bright-dev.azurefd.net/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"
+curl "https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -81,26 +81,25 @@ curl "https://bright-dev.azurefd.net/api/location/0ceeb215-c6d6-4aaa-8586-4184cb
 ```json
   {
     "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
-    "LocationName": "fac51",
-    "BuildingName": "The Hacienda", 
-    "Street": "15 Whitworth Street West",
-    "Town": "Manchester",
-    "County": "Greater Manchester",
-    "Country": "United Kingdom",
-    "Postcode": "M1 5DD",
-    "Employees": [
+    "name": "fac51",
+    "buildingName": "The Hacienda", 
+    "street": "15 Whitworth Street West",
+    "townCity": "Manchester",
+    "county": "Greater Manchester",
+    "country": "United Kingdom",
+    "postcode": "M1 5DD",
+    "employees": [
       "A82DEE40-7163-4CCE-9E07-4DD4C2884FC2",
       "b336c43e-18ae-4bd6-9961-817dee5f54dd"
     ],
     "_links":{
       "edit":{
-        "href":"https://example.com/employee/44436/contract",
+        "href":"https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
         "method":"PUT"
       }
     }
   }
 ```
-
 ### Permissions
 
 All employees for the company a location is part of have permission to view a location. 
@@ -133,10 +132,10 @@ Get all locations that are part of the logged in user's company.
 
 ### HTTP Request
 
-`GET https://bright-dev.azurefd.net/api/location/`
+`GET https://sandbox-api.brighthr.com/v1/location/`
 
 ```shell
-curl "https://bright-dev.azurefd.net/api/location/?deleted=true"
+curl "https://sandbox-api.brighthr.com/v1/location/?deleted=true"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -147,20 +146,20 @@ curl "https://bright-dev.azurefd.net/api/location/?deleted=true"
 [
   {
     "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
-    "LocationName": "fac51",
-    "BuildingName": "The Hacienda", 
-    "Street": "15 Whitworth Street West",
-    "Town": "Manchester",
-    "County": "Greater Manchester",
-    "Country": "United Kingdom",
-    "Postcode": "M1 5DD",
-    "Employees": [
+    "name": "fac51",
+    "buildingName": "The Hacienda", 
+    "street": "15 Whitworth Street West",
+    "townCity": "Manchester",
+    "county": "Greater Manchester",
+    "country": "United Kingdom",
+    "postcode": "M1 5DD",
+    "employees": [
       "A82DEE40-7163-4CCE-9E07-4DD4C2884FC2",
       "b336c43e-18ae-4bd6-9961-817dee5f54dd"
     ],
     "_links":{
       "edit":{
-        "href":"https://example.com/employee/44436/contract",
+        "href":"https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
         "method":"PUT"
       }
     }
@@ -200,10 +199,10 @@ Gets a list of locations an employee is assigned to based on their ID
 
 ### HTTP Request
 
-`GET https://bright-dev.azurefd.net/api/location/employee/<ID>`
+`GET https://sandbox-api.brighthr.com/v1/location/employee/<ID>`
 
 ```shell
-curl "https://bright-dev.azurefd.net/api/location/employee/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2?deleted=true"
+curl "https://sandbox-api.brighthr.com/v1/location/employee/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2?deleted=true"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -213,20 +212,20 @@ curl "https://bright-dev.azurefd.net/api/location/employee/A82DEE40-7163-4CCE-9E
 ```json
   {
     "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
-    "LocationName": "fac51",
-    "BuildingName": "The Hacienda", 
-    "Street": "15 Whitworth Street West",
-    "Town": "Manchester",
-    "County": "Greater Manchester",
-    "Country": "United Kingdom",
-    "Postcode": "M1 5DD",
-    "Employees": [
+    "name": "fac51",
+    "buildingName": "The Hacienda", 
+    "street": "15 Whitworth Street West",
+    "townCity": "Manchester",
+    "county": "Greater Manchester",
+    "country": "United Kingdom",
+    "postcode": "M1 5DD",
+    "employees": [
       "A82DEE40-7163-4CCE-9E07-4DD4C2884FC2",
       "b336c43e-18ae-4bd6-9961-817dee5f54dd"
     ],
     "_links":{
       "edit":{
-        "href":"https://example.com/employee/44436/contract",
+        "href":"https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
         "method":"PUT"
       }
     }
