@@ -577,12 +577,12 @@ The above command returns JSON structured like this:</p>
 <h2 id='create-location'>Create Location</h2>
 <p>Creates a location as part of the company the logged in user is part of.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST https://bright-dev.azurefd.net/api/location/</code></p>
-<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://localhost:7071/api/location'</span> <span class="se">\</span>
+<p><code>POST https://sandbox-api.brighthr.com/v1/location/</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/location'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   --data-raw <span class="s1">'  {
-      "LocationName": "fac51",
+      "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
       "Town": "Manchester",
@@ -631,12 +631,12 @@ The above command returns JSON structured like this:</p>
 <h2 id='update-location'>Update Location</h2>
 <p>Updates the address of a location. It will respond with a Bad Request should the jurisdiction of the location change and there are employees assigned to it. A jurisdiction will change if a change in county or country impacts the legislative jurisdiction. A list of jurisdictions and their associated countries and counties can be found here (TODO)...</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>PUT https://bright-dev.azurefd.net/api/location/&lt;ID&gt;</code></p>
-<pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'http://localhost:7071/api/location/'</span> <span class="se">\</span>
+<p><code>PUT https://sandbox-api.brighthr.com/v1/location/&lt;ID&gt;</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'http://sandbox-api.brighthr.com/v1/location/'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   --data-raw <span class="s1">'  {
-      "LocationName": "fac51",
+      "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
       "Town": "Manchester",
@@ -697,8 +697,8 @@ The above command returns JSON structured like this:</p>
 <h2 id='delete-location'>Delete Location</h2>
 <p>Delete a location. All employees assigned to that location will become unassigned.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>DELETE https://bright-dev.azurefd.net/api/location/&lt;ID&gt;</code></p>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s2">"https://bright-dev.azurefd.net/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span>
+<p><code>DELETE https://sandbox-api.brighthr.com/v1/location/&lt;ID&gt;</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s2">"https://sandbox-api.brighthr.com/v1/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer Access-Token"</span>
 </code></pre>
@@ -723,8 +723,8 @@ The above command returns JSON structured like this:</p>
 <h2 id='assign-employees'>Assign Employees</h2>
 <p>Assigns a collection of employees to a location. Any users who were previously assigned, but are not present in the new list of assigned employees will be unassigned</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>PUT https://bright-dev.azurefd.net/api/location/&lt;ID&gt;/assign</code></p>
-<pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'http://localhost:7071/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2/assign'</span> <span class="se">\</span>
+<p><code>PUT https://sandbox-api.brighthr.com/v1/location/&lt;ID&gt;/assign</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request PUT <span class="s1">'http://sandbox-api.brighthr.com/v1/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2/assign'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   --data-raw <span class="s1">'  {
