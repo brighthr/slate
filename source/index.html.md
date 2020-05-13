@@ -264,14 +264,14 @@ Creates a location as part of the company the logged in user is part of.
 
 ### HTTP Request
 
-`POST https://bright-dev.azurefd.net/api/location/`
+`POST https://sandbox-api.brighthr.com/v1/location/`
 
 ```shell
-curl --location --request POST 'http://localhost:7071/api/location' \
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/location' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
   --data-raw '  {
-      "LocationName": "fac51",
+      "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
       "Town": "Manchester",
@@ -303,14 +303,14 @@ Updates the address of a location. It will respond with a Bad Request should the
 
 ### HTTP Request
 
-`PUT https://bright-dev.azurefd.net/api/location/<ID>`
+`PUT https://sandbox-api.brighthr.com/v1/location/<ID>`
 
 ```shell
-curl --location --request PUT 'http://localhost:7071/api/location/' \
+curl --location --request PUT 'http://sandbox-api.brighthr.com/v1/location/' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
   --data-raw '  {
-      "LocationName": "fac51",
+      "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
       "Town": "Manchester",
@@ -348,10 +348,10 @@ Delete a location. All employees assigned to that location will become unassigne
 
 ### HTTP Request
 
-`DELETE https://bright-dev.azurefd.net/api/location/<ID>`
+`DELETE https://sandbox-api.brighthr.com/v1/location/<ID>`
 
 ```shell
-curl --request DELETE "https://bright-dev.azurefd.net/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"
+curl --request DELETE "https://sandbox-api.brighthr.com/v1/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -374,10 +374,10 @@ Assigns a collection of employees to a location. Any users who were previously a
 
 ### HTTP Request
 
-`PUT https://bright-dev.azurefd.net/api/location/<ID>/assign`
+`PUT https://sandbox-api.brighthr.com/v1/location/<ID>/assign`
 
 ```shell
-curl --location --request PUT 'http://localhost:7071/api/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2/assign' \
+curl --location --request PUT 'http://sandbox-api.brighthr.com/v1/location/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2/assign' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
   --data-raw '  {
