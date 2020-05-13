@@ -312,13 +312,13 @@ You must replace <code>Access-Token</code> with your granted access token.
 <h1 id='locations'>Locations</h1>
 <p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
 <h3 id='url-for-dev-and-production'>URL for Dev and Production</h3>
-<p>Development: https://bright-dev.azurefd.net/api/location  \
-Production: https://bright-prod.azurefd.net/api/location</p>
+<p>Development: https://sandbox-api.brighthr.com/v1/location  \
+Production: https://api.brighthr.com/v1/location</p>
 <h2 id='get-location'>Get Location</h2>
 <p>Get a single location by using it&#39;s ID.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://bright-dev.azurefd.net/api/location/&lt;ID&gt;</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bright-dev.azurefd.net/api/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"</span>
+<p><code>GET https://sandbox-api.brighthr.com/v1/location/&lt;ID&gt;</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer Access-Token"</span>
 </code></pre>
@@ -328,20 +328,20 @@ The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"LocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"BuildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"townCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"method"</span><span class="p">:</span><span class="s2">"PUT"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -403,8 +403,8 @@ The above command returns JSON structured like this:</p>
 <h2 id='get-all-locations'>Get All Locations</h2>
 <p>Get all locations that are part of the logged in user&#39;s company.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://bright-dev.azurefd.net/api/location/</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bright-dev.azurefd.net/api/location/?deleted=true"</span>
+<p><code>GET https://sandbox-api.brighthr.com/v1/location/</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/location/?deleted=true"</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer Access-Token"</span>
 </code></pre>
@@ -415,20 +415,20 @@ The above command returns JSON structured like this:</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"LocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"BuildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"townCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"method"</span><span class="p">:</span><span class="s2">"PUT"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -491,8 +491,8 @@ The above command returns JSON structured like this:</p>
 <h2 id='get-location-for-employee'>Get Location For Employee</h2>
 <p>Gets a list of locations an employee is assigned to based on their ID</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://bright-dev.azurefd.net/api/location/employee/&lt;ID&gt;</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bright-dev.azurefd.net/api/location/employee/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2?deleted=true"</span>
+<p><code>GET https://sandbox-api.brighthr.com/v1/location/employee/&lt;ID&gt;</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/location/employee/A82DEE40-7163-4CCE-9E07-4DD4C2884FC2?deleted=true"</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer Access-Token"</span>
 </code></pre>
@@ -502,20 +502,20 @@ The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"LocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"BuildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"County"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"townCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"edit"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://example.com/employee/44436/contract"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="s2">"https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"method"</span><span class="p">:</span><span class="s2">"PUT"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
