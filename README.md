@@ -1,3 +1,4 @@
+<h3>https://brighthr.github.io/slate</h3>  
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
