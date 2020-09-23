@@ -439,8 +439,8 @@ Parameter | Description
 Start | Start date and time in ISO 8601 format
 End | End date and time in ISO 8601 format
 FilterUserIds (Optional) | List of UserGuids to filter by, or null to get a timesheet for all subordinates and the requester
-IsSummary | `true` exlcudes details of breaks and provides totaled hours worked per day.
- | `false` includes detaild of breaks and provides total hours per shift.
+IsSummary | `true` exlcudes details of breaks and provides totalled hours worked per day.
+ | `false` includes details of breaks and provides total hours per shift.
 IncludeBreakdowns |  Includes weekly and total breakdowns for each employee
 IncludePayrollDetails |  Includes `Payroll Number`, `National Insurance`, `Employee Address` columns
 
