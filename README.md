@@ -6,6 +6,12 @@
 
 <p align="center"><em>Here's a link to <a href="https://rubyinstaller.org/downloads/">step-by-step guide</a> to run slate locally.</em></p>
 
+
+<p align="center"><em>Here's a link to local <a href="http://192.168.1.27:4567">local environment</a>.</em></p>
+
+<p align="center"><em>Here's a link to local <a href="http://192.168.1.27:4567/__middleman">middleman configuration</a>.</em></p>
+
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
