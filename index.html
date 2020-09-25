@@ -223,13 +223,18 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#locations" class="toc-h1 toc-link" data-title="Locations">Locations</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#url-for-dev-and-production" class="toc-h2 toc-link" data-title="URL for Dev and Production">URL for Dev and Production</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#locations" class="toc-h1 toc-link" data-title="Locations">Locations</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#get-location" class="toc-h2 toc-link" data-title="Get Location">Get Location</a>
                   </li>
@@ -257,15 +262,12 @@
             <a href="#reports" class="toc-h1 toc-link" data-title="Reports">Reports</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#url-for-dev-and-production-2" class="toc-h2 toc-link" data-title="URL for Dev and Production">URL for Dev and Production</a>
+                    <a href="#url-for-reports-dev-and-production" class="toc-h2 toc-link" data-title="URL for Reports Dev and Production">URL for Reports Dev and Production</a>
                   </li>
                   <li>
                     <a href="#timesheet" class="toc-h2 toc-link" data-title="Timesheet">Timesheet</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -309,11 +311,87 @@
 <aside class="notice">
 You must replace <code>Access-Token</code> with your granted access token.
 </aside>
-<h1 id='locations'>Locations</h1>
-<p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
 <h3 id='url-for-dev-and-production'>URL for Dev and Production</h3>
 <p>Development: https://sandbox-api.brighthr.com/v1/location  \
 Production: https://api.brighthr.com/v1/location</p>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+<p></br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br></p>
+<h1 id='locations'>Locations</h1>
+<p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
 <h2 id='get-location'>Get Location</h2>
 <p>Get a single location by using it&#39;s ID.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -754,13 +832,13 @@ The above command returns JSON structured like this:</p>
 </tbody></table>
 <h1 id='reports'>Reports</h1>
 <p>The Report API allows you to generate reports for your company.</p>
-<h3 id='url-for-dev-and-production-2'>URL for Dev and Production</h3>
+<h3 id='url-for-reports-dev-and-production'>URL for Reports Dev and Production</h3>
 <p>Development: https://bright-api-sand.azurefd.net/v1/report</p>
 
 <p>Production: https://bright-api-prod.azurefd.net/v1/report</p>
 <h2 id='timesheet'>Timesheet</h2>
 <p>Generate a timesheet report for your team for the selected date range, with the option to filter by specific employees and include payroll information.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://bright-api-sand.azurefd.net/v1/report/timesheet</code>
 <code>POST https://bright-api-prod.azurefd.net/v1/report/timesheet</code>
 <code>shell
@@ -780,9 +858,9 @@ The above command returns JSON structured like this:</p>
 <blockquote>
 <p>Make sure to replace <code>Access-Token</code> with your client key.</p>
 </blockquote>
-<h3 id='permissions-8'>Permissions</h3>
+<h3 id='permissions'>Permissions</h3>
 <p>All employees have permission to request a report. If <code>FilterUserIds</code> is not null, it must only contain guids for users which are subordinates of the requester, or the requester themself.</p>
-<h3 id='body-parameters-3'>Body parameters</h3>
+<h3 id='body-parameters'>Body parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -819,65 +897,24 @@ The above command returns JSON structured like this:</p>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
-<p>A 200 containing a .csv file stream.</p>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
+<p>A 200 containing a .csv file stream.
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br></p>
 
       </div>
       <div class="dark-box">
