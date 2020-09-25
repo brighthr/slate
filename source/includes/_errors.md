@@ -6,7 +6,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 
 The Kittn API uses the following error codes:
 
-
 Error Code | Meaning
 ---------- | -------
 400 | Bad Request -- Your request is invalid.
@@ -20,3 +19,21 @@ Error Code | Meaning
 429 | Too Many Requests -- You're requesting too many kittens! Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>

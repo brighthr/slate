@@ -1,5 +1,3 @@
-<h3></h3>  
-
 <p align="center"><em><a href="https://brighthr.github.io/slate">Click here </a> for BrightHr Slate Documentation.</em></p>
 
 <p align="center"><em>Download <a href="https://rubyinstaller.org/downloads/">Ruby Installer </a> in order to run slate locally. </br> You don't need to run locally, you can can always just make edits and push them to github (or edit them on github)</em></p>
@@ -10,7 +8,6 @@
 <p align="center"><em>Here's a link to local <a href="http://192.168.1.27:4567">local environment</a>.</em></p>
 
 <p align="center"><em>Here's a link to local <a href="http://192.168.1.27:4567/__middleman">middleman configuration</a>.</em></p>
-
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
