@@ -1,5 +1,8 @@
 # Reports
 
+</br>
+</br>
+</br>
 The Report API allows you to generate reports for your company.
 
 ### URL for Reports Dev and Production
@@ -13,6 +16,7 @@ Generate a timesheet report for your team for the selected date range, with the 
 ### HTTP Request
 `POST https://bright-api-sand.azurefd.net/v1/report/timesheet`
 `POST https://bright-api-prod.azurefd.net/v1/report/timesheet`
+
 ```shell
   curl --location --request POST 'https://bright-dev.azurefd.net/api/report/timesheet' \
   --header "Authorization: Bearer Access-Token"
@@ -26,6 +30,7 @@ Generate a timesheet report for your team for the selected date range, with the 
       "IncludePayrollDetails": "false"
     }'
 ```
+
 > Make sure to replace `Access-Token` with your client key.
 
 ### Permissions
