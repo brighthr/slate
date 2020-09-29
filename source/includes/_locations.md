@@ -339,3 +339,16 @@ Only users with the Admin role have permissions to assign to a location.
 Parameter | Description
 --------- | -----------
 ID | The ID of the location
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>

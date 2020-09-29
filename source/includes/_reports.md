@@ -44,11 +44,7 @@ IncludePayrollDetails |  Includes `Payroll Number`, `National Insurance`, `Emplo
 
 ### Response
 A 200 containing a .csv file stream.
-</br>
-</br>
-</br>
-</br>
-</br>
+
 </br>
 </br>
 </br>
