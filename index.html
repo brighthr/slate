@@ -419,20 +419,6 @@ The above command returns JSON structured like this:</p>
 <td>The ID of the location</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>deleted</td>
-<td>false</td>
-<td>If set to true, the result will also include locations that have been marked as deleted.</td>
-</tr>
-</tbody></table>
 <h3 id='links'>Links</h3>
 <p>Links will be provided only if the user has sufficient permissions</p>
 
@@ -463,7 +449,7 @@ The above command returns JSON structured like this:</p>
 <p>Get all locations that are part of the logged in user&#39;s company.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://sandbox-api.brighthr.com/v1/location/</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/location/?deleted=true"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/location/"</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer Access-Token"</span>
 </code></pre>
@@ -505,20 +491,6 @@ The above command returns JSON structured like this:</p>
 <tr>
 <td>ID</td>
 <td>The ID of the location</td>
-</tr>
-</tbody></table>
-<h3 id='query-parameters-2'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>deleted</td>
-<td>false</td>
-<td>If set to true, the result will also include locations that have been marked as deleted.</td>
 </tr>
 </tbody></table>
 <h3 id='links-2'>Links</h3>
@@ -593,20 +565,6 @@ The above command returns JSON structured like this:</p>
 <td>The ID of the employee</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-3'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>deleted</td>
-<td>false</td>
-<td>If set to true, the result will also include locations that have been marked as deleted.</td>
-</tr>
-</tbody></table>
 <h3 id='links-3'>Links</h3>
 <p>Links will be provided only if the user has sufficient permissions</p>
 
@@ -644,7 +602,7 @@ The above command returns JSON structured like this:</p>
       "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
-      "Town": "Manchester",
+      "TownCity": "Manchester",
       "County": "Greater Manchester",
       "Country": "United Kingdom",
       "Postcode": "M1 5DD"
@@ -675,7 +633,7 @@ The above command returns JSON structured like this:</p>
 <td>Street name</td>
 </tr>
 <tr>
-<td>Town</td>
+<td>TownCity</td>
 <td>Name of the town or city</td>
 </tr>
 <tr>
@@ -698,7 +656,7 @@ The above command returns JSON structured like this:</p>
       "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
-      "Town": "Manchester",
+      "TownCity": "Manchester",
       "County": "Greater Manchester",
       "Country": "United Kingdom",
       "Postcode": "M1 5DD"
@@ -741,7 +699,7 @@ The above command returns JSON structured like this:</p>
 <td>Street name</td>
 </tr>
 <tr>
-<td>Town</td>
+<td>TownCity</td>
 <td>Name of the town or city</td>
 </tr>
 <tr>
@@ -978,31 +936,11 @@ The Report API allows you to generate reports for your company.</p>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- You do not have sufficient permissions to access the resource</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Not Found -- The specified resource could not be found.</td>
 </tr>
 <tr>
 <td>500</td>
