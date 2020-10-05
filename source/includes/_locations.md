@@ -50,12 +50,6 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the location
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-deleted | false | If set to true, the result will also include locations that have been marked as deleted.
-
 ### Links
 
 Links will be provided only if the user has sufficient permissions
@@ -75,7 +69,7 @@ Get all locations that are part of the logged in user's company.
 `GET https://sandbox-api.brighthr.com/v1/location/`
 
 ```shell
-curl "https://sandbox-api.brighthr.com/v1/location/?deleted=true"
+curl "https://sandbox-api.brighthr.com/v1/location/"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
@@ -116,12 +110,6 @@ All employees for the company a location is part of have permission to view a lo
 Parameter | Description
 --------- | -----------
 ID | The ID of the location
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-deleted | false | If set to true, the result will also include locations that have been marked as deleted.
 
 ### Links
 
@@ -182,12 +170,6 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the employee
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-deleted | false | If set to true, the result will also include locations that have been marked as deleted.
-
 ### Links
 
 Links will be provided only if the user has sufficient permissions
@@ -214,7 +196,7 @@ curl --location --request POST 'http://sandbox-api.brighthr.com/v1/location' \
       "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
-      "Town": "Manchester",
+      "TownCity": "Manchester",
       "County": "Greater Manchester",
       "Country": "United Kingdom",
       "Postcode": "M1 5DD"
@@ -233,7 +215,7 @@ Parameter | Description
 LocationName | Unique name for the location
 BuildingName | Building name
 Street | Street name
-Town | Name of the town or city
+TownCity | Name of the town or city
 County | One of a set list of counties found here (TODO)...
 Country | One of a set list of countries found here (TODO)...
 
@@ -253,7 +235,7 @@ curl --location --request PUT 'http://sandbox-api.brighthr.com/v1/location/' \
       "Name": "fac51",
       "BuildingName": "The Hacienda", 
       "Street": "15 Whitworth Street West",
-      "Town": "Manchester",
+      "TownCity": "Manchester",
       "County": "Greater Manchester",
       "Country": "United Kingdom",
       "Postcode": "M1 5DD"
@@ -278,7 +260,7 @@ Parameter | Description
 LocationName | Unique name for the location
 BuildingName | Building name
 Street | Street name
-Town | Name of the town or city
+TownCity | Name of the town or city
 County | One of a set list of counties found here...
 Country | One of a set list of countries found here...
 
