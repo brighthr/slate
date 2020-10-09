@@ -11,10 +11,11 @@ toc_footers:
 includes:
   - intro
   - authentication
+  - errors
+  - company
   - locations
   - redundancy
   - reports
-  - errors
 
 search: true # index.html.md.erb
 ---
