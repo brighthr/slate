@@ -49,9 +49,9 @@ under the License.
         NAV
         <%= image_tag('navbar.png') %>
       </span>
+
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -69,6 +69,8 @@ under the License.
         </div>
         <ul class="search-results"></ul>
       <% end %>
+      <%= image_tag "logo.png", class: 'logo' %>
+
       <ul id="toc" class="toc-list-h1">
         <% toc_data(page_content).each do |h1| %>
           <li>
@@ -85,6 +87,7 @@ under the License.
           </li>
         <% end %>
       </ul>
+
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
           <% current_page.data.toc_footers.each do |footer| %>
@@ -94,9 +97,14 @@ under the License.
       <% end %>
     </div>
     <div class="page-wrapper">
+
       <div class="dark-box"></div>
       <div class="content">
-        <%= page_content %>
+      </br>
+      </br>
+      <%= image_tag "logo.png", class: 'logo' %>
+
+      <%= page_content %>
       </div>
       <div class="dark-box">
         <% if language_tabs.any? %>

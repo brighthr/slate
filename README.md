@@ -1,7 +1,9 @@
-<p align="center">To run server localy run cmd:</p>
-<p align="center"><em>bundle exec middleman server</em></p>
+<p align="center">To run server localy either run 
+</br> file: <em>run-server.bat</em>
+</br> or
+</br> run cmd <em>bundle exec middleman server</em></p>
 
-<p align="center"><em>Here's a link to <a href="http://192.168.1.27:4567">local environment</a>.</em></p>
+<p align="center"><em>Here's a <a href="http://192.168.1.168:4567">link to local environment</a>.</em></p>
 
 <p align="center"><em><a href="https://brighthr.github.io/slate">Click here </a> for BrightHr Slate Documentation.</em></p>
 

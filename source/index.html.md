@@ -12,22 +12,17 @@ includes:
   - intro
   - authentication
   - locations
-  - redundancy
+  - Redundancy/_01-intro
+  - Redundancy/_02-get
+  - Redundancy/_03-list
+  - Redundancy/_04-post
+  - Redundancy/_update-folderId
+  - Redundancy/_update-clearFolderId
+  - managerAccess
   - reports
-  - errors
 
 search: true # index.html.md.erb
 ---
 
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 </br>
 </br>
