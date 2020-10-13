@@ -19,6 +19,3 @@ curl "https://sandbox-api.brighthr.com/v1/redundancy/0ceeb215-c6d6-4aaa-8586-418
     "folderId": "9b957330-caa0-453c-93d7-85dab5581673"
 }
 ```
-
-
-

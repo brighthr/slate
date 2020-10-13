@@ -16,9 +16,9 @@ includes:
   - Redundancy/_02-get
   - Redundancy/_03-list
   - Redundancy/_04-post
-  - Redundancy/_update-folderId
-  - Redundancy/_update-clearFolderId
-  - managerAccess
+  - Redundancy/_05-update-folderId
+  - Redundancy/_06-update-clearFolderId
+  - Redundancy/_08-managerAccess
   - reports
 
 search: true # index.html.md.erb
