@@ -275,11 +275,6 @@
                   <li>
                     <a href="#put-redundancy-clearfolderid" class="toc-h2 toc-link" data-title="Put Redundancy - ClearFolderId">Put Redundancy - ClearFolderId</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#manager-access" class="toc-h1 toc-link" data-title="Manager Access">Manager Access</a>
-              <ul class="toc-list-h2">
                   <li>
                     <a href="#get-manager-access" class="toc-h2 toc-link" data-title="Get Manager Access">Get Manager Access</a>
                   </li>
@@ -810,21 +805,23 @@ This section is <code>WIP</code>.
 <p>List all redundancies that either are yours or have been shared with you (can only be shared with other admins)</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET</code> <code>https://sandbox-api.brighthr.com/v1/redundancy</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9b957330-caa0-453c-93d7-85dab5581673"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"area 5134"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"area 51"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10T14:09:22.81"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdById"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a4715c8-a213-4af0-a252-94534799126d"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"redundancyProcessId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37d70fb0-1808-4c76-a72c-d2f9847dad8d"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdByName"</span><span class="p">:</span><span class="w"> </span><span class="s2">" "</span><span class="p">,</span><span class="w"> </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"createdByName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"isCompleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10T14:09:29.74"</span><span class="p">,</span><span class="w">
@@ -841,7 +838,7 @@ The above command returns JSON structured like this:</p>
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}]</span><span class="w">
-</span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
 </span><span class="err">...</span><span class="p">]</span><span class="w">
 </span></code></pre><h2 id='post-redundancy'>Post Redundancy</h2>
 <p>Create redundancy jouney.
@@ -869,17 +866,17 @@ Payload must contain a valid FolderId Guid:</p>
 <p>Clears Redundancy.FolderId by supplying <b>FolderId</b></p>
 
 <p><code>PUT</code>
-<code>https://sandbox-api.brighthr.com/v1/redundancy/&lt;FOLDER-ID&gt;/folder</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8/folder"</span>
+<code>https://sandbox-api.brighthr.com/v1/redundancy/folder/&lt;FOLDER-ID&gt;/clear</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy/folder/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8/clear"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns 200:</p>
 </blockquote>
-<h1 id='manager-access'>Manager Access</h1><h2 id='get-manager-access'>Get Manager Access</h2>
-<p>Check if managers have access to use redundancy navigator
+<h2 id='get-manager-access'>Get Manager Access</h2>
+<p>Checks if managers have access to use redundancy navigator
 <aside class="notice">
 This section is <code>WIP</code>.
 </aside>
