@@ -207,9 +207,9 @@
         NAV
         <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
+
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-d628da9b.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -217,6 +217,8 @@
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
+      <img src="images/logo-d628da9b.png" class="logo" alt="Logo" />
+
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -259,11 +261,25 @@
             <a href="#redundancy" class="toc-h1 toc-link" data-title="Redundancy">Redundancy</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-redundancy" class="toc-h2 toc-link" data-title="Get Redundancy">Get Redundancy</a>
+                  </li>
+                  <li>
                     <a href="#list-redundancies" class="toc-h2 toc-link" data-title="List Redundancies">List Redundancies</a>
                   </li>
                   <li>
                     <a href="#post-redundancy" class="toc-h2 toc-link" data-title="Post Redundancy">Post Redundancy</a>
                   </li>
+                  <li>
+                    <a href="#put-redundancy-folderid" class="toc-h2 toc-link" data-title="Put Redundancy - FolderId">Put Redundancy - FolderId</a>
+                  </li>
+                  <li>
+                    <a href="#put-redundancy-clearfolderid" class="toc-h2 toc-link" data-title="Put Redundancy - ClearFolderId">Put Redundancy - ClearFolderId</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#manager-access" class="toc-h1 toc-link" data-title="Manager Access">Manager Access</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#get-manager-access" class="toc-h2 toc-link" data-title="Get Manager Access">Get Manager Access</a>
                   </li>
@@ -280,29 +296,22 @@
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-          </li>
       </ul>
+
         <ul class="toc-footer">
             <li><a href='mailto:github@brighthr.com'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
+
       <div class="dark-box"></div>
       <div class="content">
-        <p></br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+      </br>
+      </br>
+      <img src="images/logo-d628da9b.png" class="logo" alt="Logo" />
+
+      <p></br>
 </br></p>
 <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Bright API! You can use our API to access data we hold on you, your subordinates and your company.</p>
@@ -783,16 +792,25 @@ The above command returns JSON structured like this:</p>
 </br>
 </br></p>
 <h1 id='redundancy'>Redundancy</h1>
-<p>The Redundancy API for redundancies.</p>
+<p>The Redundancy API to manage your redundancies.</p>
 
-<p></br>
+<p><img src="images/redundancy-4ab0b590.jpg" class="logo" alt="redundancy">
+</br>
 </br>
 </br></p>
+
+<aside class="notice">
+<code>Redundancy Navigator</code> is only available to <code>Admins</code>, and managers if you have <code>ManagerAccess</code> enabled.
+</aside>
+<h2 id='get-redundancy'>Get Redundancy</h2>
+<aside class="notice">
+This section is <code>WIP</code>.
+</aside>
 <h2 id='list-redundancies'>List Redundancies</h2>
-<p>Get a single location by using it&#39;s ID.</p>
+<p>List all redundancies that either are yours or have been shared with you (can only be shared with other admins)</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://sandbox-api.brighthr.com/v1/redundancy/&lt;ID&gt;</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8?deleted=true"</span>
+<p><code>GET</code> <code>https://sandbox-api.brighthr.com/v1/redundancy</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy"</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer Access-Token"</span>
 </code></pre>
@@ -800,7 +818,7 @@ The above command returns JSON structured like this:</p>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9b957330-caa0-453c-93d7-85dab5581673"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"area 5134"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10T14:09:22.81"</span><span class="p">,</span><span class="w">
@@ -823,13 +841,44 @@ The above command returns JSON structured like this:</p>
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="err">...</span><span class="p">]</span><span class="w">
 </span></code></pre><h2 id='post-redundancy'>Post Redundancy</h2>
 <p>Create redundancy jouney.
 <aside class="notice">
 This section is <code>WIP</code>.
 </aside></p>
-<h2 id='get-manager-access'>Get Manager Access</h2>
+<h2 id='put-redundancy-folderid'>Put Redundancy - FolderId</h2>
+<p>Updates a Redundancy FolderId</p>
+
+<p><code>PUT</code>
+<code>https://sandbox-api.brighthr.com/v1/redundancy/&lt;ID&gt;/folder</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8/folder"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns 200:
+Payload must contain a valid FolderId Guid:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9b957330-caa0-453c-93d7-85dab5581673"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='put-redundancy-clearfolderid'>Put Redundancy - ClearFolderId</h2>
+<p>Clears Redundancy.FolderId by supplying <b>FolderId</b></p>
+
+<p><code>PUT</code>
+<code>https://sandbox-api.brighthr.com/v1/redundancy/&lt;FOLDER-ID&gt;/folder</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/redundancy/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8/folder"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns 200:</p>
+</blockquote>
+<h1 id='manager-access'>Manager Access</h1><h2 id='get-manager-access'>Get Manager Access</h2>
 <p>Check if managers have access to use redundancy navigator
 <aside class="notice">
 This section is <code>WIP</code>.
@@ -917,42 +966,6 @@ The Report API allows you to generate reports for your company.</p>
 </br>
 </br>
 </br>
-</br>
-</br></p>
-<h1 id='errors'>Errors</h1>
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- You do not have sufficient permissions to access the resource</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified resource could not be found.</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
-
-<p></br>
 </br>
 </br></p>
 
