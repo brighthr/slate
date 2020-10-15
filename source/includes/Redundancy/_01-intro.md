@@ -2,7 +2,6 @@
 
 The Redundancy API to manage your redundancies.
 
-<img src="images/redundancy.jpg" class="logo" alt="redundancy">
 </br>
 </br>
 </br>
