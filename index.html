@@ -232,6 +232,25 @@
               </ul>
           </li>
           <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#company" class="toc-h1 toc-link" data-title="Company">Company</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-company" class="toc-h2 toc-link" data-title="Create a new Company">Create a new Company</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#employee" class="toc-h1 toc-link" data-title="Employee">Employee</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-employees" class="toc-h2 toc-link" data-title="List Employees">List Employees</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#locations" class="toc-h1 toc-link" data-title="Locations">Locations</a>
               <ul class="toc-list-h2">
                   <li>
@@ -375,6 +394,121 @@ Production: https://api.brighthr.com/v1/location</p>
 </br>
 </br>
 </br></p>
+<h1 id='errors'>Errors</h1>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- You do not have sufficient permissions to access the resource</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified resource could not be found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+<p></br>
+</br>
+</br></p>
+<h1 id='company'>Company</h1>
+<p>The Company API provides functionality for managing BrightHR subscriptions, and can be used by company administrators, BrightHR and our partners.
+It handles registering new companies, sending signup email reminders and managing subscription dates.</p>
+<h2 id='create-a-new-company'>Create a new Company</h2>
+<p>Registers a new BrightHR company and subscription details.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /v1/company</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'https://api.brighthr.com/v1/company'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer access-token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'{
+      "name":"Company ABC",
+      "countryCode":"GB",
+      "leadType":"BuyItNow",
+      "industry":"Leisure",
+      "externalReference": "BRHR1234",
+      "cdsId": 1234,
+      "salesReference": "1234",
+      "contact": {
+          "firstName":"First",
+          "lastName":"Last",
+          "email":"demo@demo.com",
+          "phone":"01610000000",
+          "mobile":"0700000000"
+      },
+      "subscription": {
+          "start": "2020-08-07",
+          "end": "2021-08-06",
+          "seats": 3,
+          "package": "connect"
+      }
+}'</span>
+</code></pre>
+<p>Make sure to replace <code>access-token</code> with your own access token.</p>
+<h3 id='http-response'>HTTP Response</h3>
+<p><code>201 Created</code>
+<code>
+{
+    &quot;id&quot;: &quot;108c3786-a628-4d48-81c1-9abb2cc23e45&quot;,
+    &quot;contact&quot;: {
+        &quot;id&quot;: &quot;c09320a4-24e3-4c20-bb21-aa80882143ca&quot;
+    },
+    &quot;_links&quot;: {
+        &quot;create-account&quot;: {
+            &quot;href&quot;: &quot;https://app.brighthr.com/reseller-signup/c09320a4-24e3-4c20-bb21-aa80882143ca&quot;
+        }
+    }
+}
+</code></p>
+<h3 id='permissions'>Permissions</h3>
+<p>Scope required: <code>subscription:write</code></p>
+<h1 id='employee'>Employee</h1>
+<p>The Employee API provides functionality for adding, listing and terminating employees for a BrightHR company.</p>
+<h2 id='list-employees'>List Employees</h2>
+<p>Retrieves a list of all employees in your company.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /v1/employee</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'https://api.brighthr.com/v1/employee'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer access-token'</span>
+</code></pre>
+<p>Make sure to replace <code>access-token</code> with your access token.</p>
+<h3 id='http-response'>HTTP Response</h3>
+<p><code>200 OK</code>
+<code>
+[
+    {
+        &quot;id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+        &quot;firstName&quot;: &quot;Peter&quot;,
+        &quot;lastName&quot;: &quot;Jones&quot;,
+        &quot;jobTitle&quot;: &quot;CEO&quot;,
+        &quot;profileImage&quot;: &quot;https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50&quot;,
+        &quot;terminated&quot;: false
+    }
+]
+</code></p>
+<h3 id='permissions'>Permissions</h3>
+<p>An active user bearer token is required.</p>
+
+<p>Scope required: <code>tbc</code></p>
 <h1 id='locations'>Locations</h1>
 <p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
 <h2 id='get-location'>Get Location</h2>
