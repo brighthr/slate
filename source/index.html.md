@@ -13,22 +13,19 @@ includes:
   - authentication
   - errors
   - company
+  - employee
   - locations
-  - redundancy
+  - Redundancy/_01-intro
+  - Redundancy/_02-get
+  - Redundancy/_03-list
+  - Redundancy/_04-post
+  - Redundancy/_05-update-folderId
+  - Redundancy/_06-update-clearFolderId
+  - Redundancy/_08-managerAccess
   - reports
 
 search: true # index.html.md.erb
 ---
 
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 </br>
 </br>
