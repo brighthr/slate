@@ -11,6 +11,9 @@ toc_footers:
 includes:
   - intro
   - authentication
+  - errors
+  - company
+  - employee
   - locations
   - Redundancy/_01-intro
   - Redundancy/_02-get
