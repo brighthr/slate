@@ -310,6 +310,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#rota" class="toc-h1 toc-link" data-title="Rota">Rota</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#copy-rota" class="toc-h2 toc-link" data-title="Copy Rota">Copy Rota</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
 
         <ul class="toc-footer">
@@ -1082,6 +1090,63 @@ The Report API allows you to generate reports for your company.</p>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <p>A 200 containing a .csv file stream.</p>
+
+<p></br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br></p>
+<h1 id='rota'>Rota</h1>
+<p>The Rota API allows you to fetch or create rotas and shifts.</p>
+<h2 id='copy-rota'>Copy Rota</h2>
+<p>Creates a new rota with shifts copied from a specified rota.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/copy</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/location'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'{
+      "rotaToCopyId": 1,
+      "startDate": "2020-12-01",
+      "name": "New Rota"
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='permissions'>Permissions</h3>
+<p>Admins and managers have the ability to create copied rotas. </p>
+<h3 id='body-parameters'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>RotaToCopyId</td>
+<td>The integer Id of the rota you want to replicate</td>
+</tr>
+<tr>
+<td>StartDate</td>
+<td>Start Date of the new rota</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>A unique name for the new rota</td>
+</tr>
+</tbody></table>
 
 <p></br>
 </br>
