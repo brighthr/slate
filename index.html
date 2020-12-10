@@ -1108,12 +1108,11 @@ The Report API allows you to generate reports for your company.</p>
 <h2 id='copy-rota'>Copy Rota</h2>
 <p>Creates a new rota with shifts copied from a specified rota.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://sandbox-api.brighthr.com/v1/rota/copy</code></p>
-<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/location'</span> <span class="se">\</span>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:int}/copy</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:int}/copy'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   --data-raw <span class="s1">'{
-      "rotaToCopyId": 1,
       "startDate": "2020-12-01",
       "name": "New Rota"
     }'</span>
@@ -1127,7 +1126,7 @@ The above command returns JSON structured like this:</p>
   </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='permissions'>Permissions</h3>
 <p>Admins and managers have the ability to create copied rotas. </p>
-<h3 id='body-parameters'>Body parameters</h3>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1136,8 +1135,16 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>RotaToCopyId</td>
-<td>The integer Id of the rota you want to replicate</td>
+<td>The integer Id of the rota you want to copy</td>
 </tr>
+</tbody></table>
+<h3 id='body-parameters'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>StartDate</td>
 <td>Start Date of the new rota</td>
