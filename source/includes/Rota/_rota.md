@@ -8,10 +8,10 @@ Creates a new rota with shifts copied from a specified rota.
 
 ### HTTP Request
 
-`POST https://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:int}/copy`
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy`
 
 ```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:int}/copy' \
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
   --data-raw '{
@@ -24,7 +24,7 @@ curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaToC
 
 ```json
   {
-    "id": 2
+    "id": "532E179F-3316-49B3-AB12-8FCF50FD7A28"
   }
 ```
 ### Permissions
@@ -35,7 +35,7 @@ Admins and managers have the ability to create copied rotas.
 
 Parameter | Description
 --------- | -----------
-RotaToCopyId | The integer Id of the rota you want to copy
+RotaToCopyId | The Guid Id of the rota you want to copy
 
 ### Body parameters
 
