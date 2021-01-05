@@ -50,6 +50,28 @@ IncludePayrollDetails |  Includes `Payroll Number`, `National Insurance`, `Emplo
 ### Response
 A 200 containing a .csv file stream.
 
+## Expense Report
+
+### HTTP Request
+`POST https://bright-api-sand.azurefd.net/v1/report/pop`
+</br>
+`POST https://bright-api-prod.azurefd.net/v1/report/pop`
+
+
+> Make sure to replace `Access-Token` with your client key.
+
+### Permissions
+
+### Body parameters
+Parameter | Description
+--------- | -----------
+Start | Start date and time in ISO 8601 format
+End | End date and time in ISO 8601 format
+PaidExpenses | `true` `false`
+
+### Response
+A 200 containing a .csv file stream.
+
 </br>
 </br>
 </br>
