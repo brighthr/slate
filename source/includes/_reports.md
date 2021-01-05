@@ -57,17 +57,27 @@ A 200 containing a .csv file stream.
 </br>
 `POST https://bright-api-prod.azurefd.net/v1/report/pop`
 
+```shell
+  curl --location --request POST 'https://bright-dev.azurefd.net/api/report/pop' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '  {
+      "Start": "2020-01-01",
+      "End": "2020-01-08",
+      "PaidExpenses": "true",
+    }'
+```
 
 > Make sure to replace `Access-Token` with your client key.
 
 ### Permissions
-
+Any admin or manager can produce this report. All subordinates' expenses will be included. `Start` and `End` are only required when `PaidExpenses` is `true`.
 ### Body parameters
 Parameter | Description
---------- | -----------
-Start | Start date and time in ISO 8601 format
-End | End date and time in ISO 8601 format
-PaidExpenses | `true` `false`
+--------- | ----------
+Start | Start date
+End | End date
+PaidExpenses | `true` Report will contain only paid expenses</br>`false` Report will contain only approved expenses
 
 ### Response
 A 200 containing a .csv file stream.
