@@ -53,9 +53,9 @@ A 200 containing a .csv file stream.
 ## Expense Report
 
 ### HTTP Request
-`POST https://bright-api-sand.azurefd.net/v1/report/pop`
+`POST https://sandbox-api.brighthr.com/v1/report/pop`
 </br>
-`POST https://bright-api-prod.azurefd.net/v1/report/pop`
+`POST https://api.brighthr.com/v1/report/pop`
 
 ```shell
   curl --location --request POST 'https://bright-dev.azurefd.net/api/report/pop' \
@@ -72,6 +72,7 @@ A 200 containing a .csv file stream.
 
 ### Permissions
 Any admin or manager can produce this report. All subordinates' expenses will be included. `Start` and `End` are only required when `PaidExpenses` is `true`.
+
 ### Body parameters
 Parameter | Description
 --------- | ----------
