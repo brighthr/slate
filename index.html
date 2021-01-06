@@ -308,6 +308,9 @@
                   <li>
                     <a href="#timesheet" class="toc-h2 toc-link" data-title="Timesheet">Timesheet</a>
                   </li>
+                  <li>
+                    <a href="#expense-report" class="toc-h2 toc-link" data-title="Expense Report">Expense Report</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1089,6 +1092,46 @@ The Report API allows you to generate reports for your company.</p>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
+<p>A 200 containing a .csv file stream.</p>
+<h2 id='expense-report'>Expense Report</h2><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://bright-api-sand.azurefd.net/v1/report/pop</code>
+</br>
+<code>POST https://bright-api-prod.azurefd.net/v1/report/pop</code></p>
+<pre class="highlight shell tab-shell"><code>  curl --location --request POST <span class="s1">'https://bright-dev.azurefd.net/api/report/pop'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'  {
+      "Start": "2020-01-01",
+      "End": "2020-01-08",
+      "PaidExpenses": "true",
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.</p>
+</blockquote>
+<h3 id='permissions-2'>Permissions</h3>
+<p>Any admin or manager can produce this report. All subordinates&#39; expenses will be included. <code>Start</code> and <code>End</code> are only required when <code>PaidExpenses</code> is <code>true</code>.</p>
+<h3 id='body-parameters-2'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Start</td>
+<td>Start date</td>
+</tr>
+<tr>
+<td>End</td>
+<td>End date</td>
+</tr>
+<tr>
+<td>PaidExpenses</td>
+<td><code>true</code> Report will contain only paid expenses</br><code>false</code> Report will contain only approved expenses</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
 <p>A 200 containing a .csv file stream.</p>
 
 <p></br>
