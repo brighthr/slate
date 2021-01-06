@@ -23,6 +23,7 @@ includes:
   - Redundancy/_06-update-clearFolderId
   - Redundancy/_08-managerAccess
   - reports
+  - Rota/_rota
 
 search: true # index.html.md.erb
 ---
