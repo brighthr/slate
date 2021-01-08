@@ -58,7 +58,7 @@ A 200 containing a .csv file stream.
 `POST https://api.brighthr.com/v1/report/pop`
 
 ```shell
-  curl --location --request POST 'https://bright-dev.azurefd.net/api/report/pop' \
+  curl --location --request POST 'https://api.brighthr.com/v1/report/pop' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
   --data-raw '  {
