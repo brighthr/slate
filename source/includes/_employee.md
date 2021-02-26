@@ -24,7 +24,7 @@ Make sure to replace `access-token` with your access token.
 [
     {
         "id": "00000000-0000-0000-0000-000000000000",
-        "contactEmail": "ceo@company.tld",
+        "email": "ceo@company.tld",
         "firstName": "Peter",
         "lastName": "Jones",
         "jobTitle": "CEO",
