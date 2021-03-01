@@ -25,7 +25,3 @@ Only Admins (and Managers when manager access is enabled) can create Redundancie
 Parameter | Description
 --------- | -----------
 RedundancyName | Unique name for the redundancy
-
-<aside class="notice">
-This section is <code>WIP</code>.
-</aside>
