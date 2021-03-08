@@ -39,9 +39,9 @@ curl "https://sandbox-api.brighthr.com/v1/redundancy" \
                     "method": "post"
                 }
             }
-        },]
+        },
+      ]
   },
-...
 ]
 ```
 
