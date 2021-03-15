@@ -60,3 +60,40 @@ Make sure to replace `access-token` with your own access token.
 ### Permissions
 
 Scope required: `subscription:write`
+
+
+## List Companies
+
+Lists all companies in Bright.
+
+### HTTP Request
+
+`GET /v1/company`
+
+```shell
+curl --location --request POST 'https://api.brighthr.com/v1/company' \
+  --header "Authorization: Bearer access-token"
+```
+Make sure to replace `access-token` with your own access token.
+
+### HTTP Response
+
+`200 OK`
+```
+[
+	{
+		"id":"",
+		"cdsId":"",
+		"industry":"",
+		"leadType":"",
+		"name":"",
+		"externalReference":"",
+		"salesReference":"",
+		"tenant":""
+	}
+]
+```
+
+### Permissions
+
+Scope required: `company:read`
