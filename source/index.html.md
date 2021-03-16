@@ -19,9 +19,12 @@ includes:
   - Redundancy/_02-get
   - Redundancy/_03-list
   - Redundancy/_04-post
-  - Redundancy/_05-update-folderId
-  - Redundancy/_06-update-clearFolderId
-  - Redundancy/_08-managerAccess
+  - Redundancy/_05-update-stage
+  - Redundancy/_06-archive
+  - Redundancy/_07-publish
+  - Redundancy/_08-update-folderId
+  - Redundancy/_09-update-clearFolderId
+  - Redundancy/_10-managerAccess
   - reports
   - Rota/_rota
 
