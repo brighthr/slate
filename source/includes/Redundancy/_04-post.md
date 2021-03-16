@@ -8,7 +8,7 @@ Creates a new redundancy process
 
 ```shell
 curl --location --request POST 'http://sandbox-api.brighthr.com/v1/redundancy' \
-  --header "Authorization: Bearer Access-Token"
+  --header "Authorization: Bearer Access-Token" \
   --header 'Content-Type: application/json' \
   --data-raw '  {
       "RedundancyName": "Redundancy"

@@ -8,8 +8,8 @@ Creates a new redundancy process
 
 ```shell
 curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/redundancy/0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8' \
-  --header "Authorization: Bearer Access-Token"
-  --header 'Content-Type: application/json'
+  --header "Authorization: Bearer Access-Token" \
+  --header 'Content-Type: application/json' \
 ```
 > Make sure to replace `Access-Token` with your client key.
 
