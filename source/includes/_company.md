@@ -82,14 +82,14 @@ Make sure to replace `access-token` with your own access token.
 ```
 [
 	{
-		"id":"",
-		"cdsId":"",
-		"industry":"",
-		"leadType":"",
-		"name":"",
-		"externalReference":"",
-		"salesReference":"",
-		"tenant":""
+		"id":"d1469976-ab53-4ea6-8912-5b4b0fb68e63",
+		"cdsId": 1235,
+		"industry":"string",
+		"leadType":"string",
+		"name":"A company",
+		"externalReference":"CAN0001",
+		"salesReference":"string",
+		"tenant":"UK"
 	}
 ]
 ```
@@ -97,3 +97,4 @@ Make sure to replace `access-token` with your own access token.
 ### Permissions
 
 Scope required: `company:read`
+Must not have `sub` implying you are a service calling the API.
