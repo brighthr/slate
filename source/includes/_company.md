@@ -71,7 +71,7 @@ Lists all companies in Bright.
 `GET /v1/company`
 
 ```shell
-curl --location --request POST 'https://api.brighthr.com/v1/company' \
+curl --location --request GET 'https://api.brighthr.com/v1/company' \
   --header "Authorization: Bearer access-token"
 ```
 Make sure to replace `access-token` with your own access token.
