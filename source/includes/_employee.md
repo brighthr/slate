@@ -50,7 +50,7 @@ Retrieves a list of all employees in your company.
 `GET /v1/employee`
 
 ```shell
-curl --location --request GET 'https://api.brighthr.com/v1/employee/{companyId}' \
+curl --location --request GET 'https://api.brighthr.com/v1/employee/company/{companyId}' \
   --header 'Authorization: Bearer access-token'
 ```
 
