@@ -329,10 +329,10 @@ Get all locations for a company.
 
 ### HTTP Request
 
-`GET https://sandbox-api.brighthr.com/v1/location/{companyId}`
+`GET https://sandbox-api.brighthr.com/v1/location/company/{companyId}`
 
 ```shell
-curl "https://sandbox-api.brighthr.com/v1/location/{companyId}"
+curl "https://sandbox-api.brighthr.com/v1/location/company/{companyId}"
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer Access-Token"
 ```
