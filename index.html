@@ -280,6 +280,9 @@
                   <li>
                     <a href="#assign-employees" class="toc-h2 toc-link" data-title="Assign Employees">Assign Employees</a>
                   </li>
+                  <li>
+                    <a href="#get-all-locations-by-companyid" class="toc-h2 toc-link" data-title="Get All Locations by CompanyID">Get All Locations by CompanyID</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -976,8 +979,51 @@ The above command returns JSON structured like this:</p>
 <td>The ID of the location</td>
 </tr>
 </tbody></table>
+<h2 id='get-all-locations-by-companyid'>Get All Locations by CompanyID</h2>
+<p>Get all locations for a company.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://sandbox-api.brighthr.com/v1/location/company/{companyId}</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/location/company/{companyId}"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"townCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='permissions-8'>Permissions</h3>
+<p>Only service to services calls with the scope of <code>location:read</code> can access this endpoint.</p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CompanyID</td>
+<td>The ID of the company</td>
+</tr>
+</tbody></table>
 
 <p></br>
+</br>
 </br>
 </br>
 </br>
