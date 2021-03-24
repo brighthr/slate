@@ -22,7 +22,7 @@ curl "https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184c
   {
     "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
     "name": "fac51",
-    "buildingName": "The Hacienda", 
+    "buildingName": "The Hacienda",
     "street": "15 Whitworth Street West",
     "townCity": "Manchester",
     "county": "Greater Manchester",
@@ -42,7 +42,7 @@ curl "https://sandbox-api.brighthr.com/v1/location/0ceeb215-c6d6-4aaa-8586-4184c
 ```
 ### Permissions
 
-All employees for the company a location is part of have permission to view a location. 
+All employees for the company a location is part of have permission to view a location.
 
 ### URL Parameters
 
@@ -57,7 +57,7 @@ Links will be provided only if the user has sufficient permissions
 Parameter | Permissions | Description
 --------- | ----------- | -----------
 edit | Admin | URL and method for editing a location
-assign | Admin | URL and method for assigning users to a location 
+assign | Admin | URL and method for assigning users to a location
 delete | Admin | URL and method for deleting a location
 
 ## Get All Locations
@@ -81,7 +81,7 @@ curl "https://sandbox-api.brighthr.com/v1/location/"
   {
     "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
     "name": "fac51",
-    "buildingName": "The Hacienda", 
+    "buildingName": "The Hacienda",
     "street": "15 Whitworth Street West",
     "townCity": "Manchester",
     "county": "Greater Manchester",
@@ -103,7 +103,7 @@ curl "https://sandbox-api.brighthr.com/v1/location/"
 
 ### Permissions
 
-All employees for the company a location is part of have permission to view a location. 
+All employees for the company a location is part of have permission to view a location.
 
 ### URL Parameters
 
@@ -118,7 +118,7 @@ Links will be provided only if the user has sufficient permissions
 Parameter | Permissions | Description
 --------- | ----------- | -----------
 edit | Admin | URL and method for editing a location
-assign | Admin | URL and method for assigning users to a location 
+assign | Admin | URL and method for assigning users to a location
 delete | Admin | URL and method for deleting a location
 
 ## Get Location For Employee
@@ -141,7 +141,7 @@ curl "https://sandbox-api.brighthr.com/v1/location/employee/A82DEE40-7163-4CCE-9
   {
     "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
     "name": "fac51",
-    "buildingName": "The Hacienda", 
+    "buildingName": "The Hacienda",
     "street": "15 Whitworth Street West",
     "townCity": "Manchester",
     "county": "Greater Manchester",
@@ -162,7 +162,7 @@ curl "https://sandbox-api.brighthr.com/v1/location/employee/A82DEE40-7163-4CCE-9
 
 ### Permissions
 
-All employees for the company a location is part of have permission to view a location. 
+All employees for the company a location is part of have permission to view a location.
 
 ### URL Parameters
 
@@ -177,7 +177,7 @@ Links will be provided only if the user has sufficient permissions
 Parameter | Permissions | Description
 --------- | ----------- | -----------
 edit | Admin | URL and method for editing a location
-assign | Admin | URL and method for assigning users to a location 
+assign | Admin | URL and method for assigning users to a location
 delete | Admin | URL and method for deleting a location
 
 ## Create Location
@@ -194,7 +194,7 @@ curl --location --request POST 'http://sandbox-api.brighthr.com/v1/location' \
   --header 'Content-Type: application/json' \
   --data-raw '  {
       "Name": "fac51",
-      "BuildingName": "The Hacienda", 
+      "BuildingName": "The Hacienda",
       "Street": "15 Whitworth Street West",
       "TownCity": "Manchester",
       "County": "Greater Manchester",
@@ -233,7 +233,7 @@ curl --location --request PUT 'http://sandbox-api.brighthr.com/v1/location/' \
   --header 'Content-Type: application/json' \
   --data-raw '  {
       "Name": "fac51",
-      "BuildingName": "The Hacienda", 
+      "BuildingName": "The Hacienda",
       "Street": "15 Whitworth Street West",
       "TownCity": "Manchester",
       "County": "Greater Manchester",
