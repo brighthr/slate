@@ -240,6 +240,9 @@
                   <li>
                     <a href="#create-a-new-company" class="toc-h2 toc-link" data-title="Create a new Company">Create a new Company</a>
                   </li>
+                  <li>
+                    <a href="#list-companies" class="toc-h2 toc-link" data-title="List Companies">List Companies</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -247,9 +250,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#list-employees" class="toc-h2 toc-link" data-title="List Employees">List Employees</a>
-                  </li>
-                  <li>
-                    <a href="#list-employees-by-company" class="toc-h2 toc-link" data-title="List Employees by company">List Employees by company</a>
                   </li>
               </ul>
           </li>
@@ -492,6 +492,33 @@ It handles registering new companies, sending signup email reminders and managin
 </code></p>
 <h3 id='permissions'>Permissions</h3>
 <p>Scope required: <code>subscription:write</code></p>
+<h2 id='list-companies'>List Companies</h2>
+<p>Lists all companies in Bright.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/company</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'https://api.brighthr.com/v1/company'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer access-token"</span>
+</code></pre>
+<p>Make sure to replace <code>access-token</code> with your own access token.</p>
+<h3 id='http-response-2'>HTTP Response</h3>
+<p><code>200 OK</code>
+<code>
+[
+    {
+        &quot;id&quot;:&quot;d1469976-ab53-4ea6-8912-5b4b0fb68e63&quot;,
+        &quot;cdsId&quot;: 1235,
+        &quot;industry&quot;:&quot;string&quot;,
+        &quot;leadType&quot;:&quot;string&quot;,
+        &quot;name&quot;:&quot;A company&quot;,
+        &quot;externalReference&quot;:&quot;CAN0001&quot;,
+        &quot;salesReference&quot;:&quot;string&quot;,
+        &quot;tenant&quot;:&quot;UK&quot;
+    }
+]
+</code></p>
+<h3 id='permissions-2'>Permissions</h3>
+<p>Scope required: <code>company:read</code>
+Must not have <code>sub</code> implying you are a service calling the API.</p>
 <h1 id='employee'>Employee</h1>
 <p>The Employee API provides functionality for adding, listing and terminating employees for a BrightHR company.</p>
 <h2 id='list-employees'>List Employees</h2>
@@ -521,33 +548,6 @@ It handles registering new companies, sending signup email reminders and managin
 <p>An active user bearer token is required.</p>
 
 <p>Scope required: <code>tbc</code></p>
-<h2 id='list-employees-by-company'>List Employees by company</h2>
-<p>Retrieves a list of all employees in your company.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET /v1/employee</code></p>
-<pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'https://api.brighthr.com/v1/employee/company/{companyId}'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: Bearer access-token'</span>
-</code></pre>
-<p>Make sure to replace <code>access-token</code> with your access token.</p>
-<h3 id='http-response-2'>HTTP Response</h3>
-<p><code>200 OK</code>
-<code>
-[
-    {
-        &quot;id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
-        &quot;email&quot;: &quot;ceo@company.tld&quot;,
-        &quot;firstName&quot;: &quot;Peter&quot;,
-        &quot;lastName&quot;: &quot;Jones&quot;,
-        &quot;jobTitle&quot;: &quot;CEO&quot;,
-        &quot;profileImage&quot;: &quot;https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50&quot;,
-        &quot;terminated&quot;: false
-    }
-]
-</code></p>
-<h3 id='permissions-2'>Permissions</h3>
-<p>An active user bearer token is required.</p>
-
-<p>Scope required: <code>company:read</code> Must not have <code>sub</code> implying you are a service calling the API.</p>
 <h1 id='locations'>Locations</h1>
 <p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
 <h2 id='get-location'>Get Location</h2>
