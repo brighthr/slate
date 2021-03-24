@@ -322,6 +322,53 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the location
 
+
+## Get All Locations by CompanyID
+
+Get all locations for a company.
+
+### HTTP Request
+
+`GET https://sandbox-api.brighthr.com/v1/location/company/{companyId}`
+
+```shell
+curl "https://sandbox-api.brighthr.com/v1/location/company/{companyId}"
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer Access-Token"
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8",
+    "name": "fac51",
+    "buildingName": "The Hacienda",
+    "street": "15 Whitworth Street West",
+    "townCity": "Manchester",
+    "county": "Greater Manchester",
+    "country": "United Kingdom",
+    "postcode": "M1 5DD",
+    "employees": [
+      "A82DEE40-7163-4CCE-9E07-4DD4C2884FC2",
+      "b336c43e-18ae-4bd6-9961-817dee5f54dd"
+    ]
+  }
+]
+```
+
+### Permissions
+
+Only service to services calls with the scope of `location:read` can access this endpoint.
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+CompanyID | The ID of the company
+
+</br>
 </br>
 </br>
 </br>
