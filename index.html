@@ -248,6 +248,9 @@
                   <li>
                     <a href="#list-employees" class="toc-h2 toc-link" data-title="List Employees">List Employees</a>
                   </li>
+                  <li>
+                    <a href="#list-employees-by-company" class="toc-h2 toc-link" data-title="List Employees by company">List Employees by company</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -273,9 +276,6 @@
                   </li>
                   <li>
                     <a href="#assign-employees" class="toc-h2 toc-link" data-title="Assign Employees">Assign Employees</a>
-                  </li>
-                  <li>
-                    <a href="#get-all-locations-by-companyid" class="toc-h2 toc-link" data-title="Get All Locations by CompanyID">Get All Locations by CompanyID</a>
                   </li>
               </ul>
           </li>
@@ -521,6 +521,33 @@ It handles registering new companies, sending signup email reminders and managin
 <p>An active user bearer token is required.</p>
 
 <p>Scope required: <code>tbc</code></p>
+<h2 id='list-employees-by-company'>List Employees by company</h2>
+<p>Retrieves a list of all employees in your company.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /v1/employee</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'https://api.brighthr.com/v1/employee/company/{companyId}'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer access-token'</span>
+</code></pre>
+<p>Make sure to replace <code>access-token</code> with your access token.</p>
+<h3 id='http-response-2'>HTTP Response</h3>
+<p><code>200 OK</code>
+<code>
+[
+    {
+        &quot;id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;,
+        &quot;email&quot;: &quot;ceo@company.tld&quot;,
+        &quot;firstName&quot;: &quot;Peter&quot;,
+        &quot;lastName&quot;: &quot;Jones&quot;,
+        &quot;jobTitle&quot;: &quot;CEO&quot;,
+        &quot;profileImage&quot;: &quot;https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50&quot;,
+        &quot;terminated&quot;: false
+    }
+]
+</code></p>
+<h3 id='permissions-2'>Permissions</h3>
+<p>An active user bearer token is required.</p>
+
+<p>Scope required: <code>company:read</code> Must not have <code>sub</code> implying you are a service calling the API.</p>
 <h1 id='locations'>Locations</h1>
 <p>The Location API allows you to fetch or set details about any locations that belong to your company.</p>
 <h2 id='get-location'>Get Location</h2>
@@ -917,48 +944,6 @@ The above command returns JSON structured like this:</p>
 <tr>
 <td>ID</td>
 <td>The ID of the location</td>
-</tr>
-</tbody></table>
-<h2 id='get-all-locations-by-companyid'>Get All Locations by CompanyID</h2>
-<p>Get all locations for a company.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
-<p><code>GET https://sandbox-api.brighthr.com/v1/location/company/{companyId}</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-api.brighthr.com/v1/location/company/{companyId}"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer Access-Token"</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>Access-Token</code> with your client key.
-The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ceeb215-c6d6-4aaa-8586-4184cbb8ccd8"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fac51"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"buildingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hacienda"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 Whitworth Street West"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"townCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greater Manchester"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M1 5DD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"A82DEE40-7163-4CCE-9E07-4DD4C2884FC2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"b336c43e-18ae-4bd6-9961-817dee5f54dd"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='permissions-8'>Permissions</h3>
-<p>Only service to services calls with the scope of <code>location:read</code> can access this endpoint.</p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>CompanyID</td>
-<td>The ID of the company</td>
 </tr>
 </tbody></table>
 
