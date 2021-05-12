@@ -1,19 +1,17 @@
-## Create Redundancy
+## Update Redundancy Stage
 
-Creates a new redundancy process
+Updates a given stage of the redundancy
 
 ### HTTP Request
 
-`POST https://sandbox-api.brighthr.com/v1/redundancy/`
+`POST https://sandbox-api.brighthr.com/v1/redundancy/<ID>/stage/<STAGE-ID>`
 
 ```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/redundancy' \
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/redundancy//stage/' \
   --header "Authorization: Bearer Access-Token" \
   --header 'Content-Type: application/json' \
-  --data-raw '  {
-      "RedundancyName": "Redundancy"
-    }'
-```
+  ```
+
 > Make sure to replace `Access-Token` with your client key.
 
 ### Permissions
