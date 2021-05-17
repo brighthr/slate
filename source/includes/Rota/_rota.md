@@ -463,8 +463,112 @@ curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota/{rotaI
 
 ### Permissions
 
-Admins and managers have the ability to delete rotas. 
+Admins and managers can delete shifts. 
 
+## Get Rota
+
+Retrieves a shift by its unique identifier.
+
+### HTTP Request
+
+`GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftGuid:guid}`
+
+```shell
+curl --location --request GET 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftGuid:guid}' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+{
+    "start": "2021-05-13T09:00:00+01",
+    "end": "2021-05-13T17:00:00+01",
+    "breakDuration": {
+        "hours": 0,
+        "minutes": 0
+    },
+    "duration": {
+        "hours": 8,
+        "minutes": 0
+    },
+    "notes": "",
+    "shiftStatus": "Accepted",
+    "id": 200,
+    "shiftGuid": "5fb7e292-74a4-453b-bdab-62575c56adb4"
+}
+```
+### Permissions
+
+Admins and managers have the ability to view all shifts, and employees can see shifts on rotas they are assigned to. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaId | The unique identifier of the rota
+rotaId | The unique identifier of the shift
+
+## List Rota
+
+Lists all shifts that an employee participates in within the span of dates given by the query parameters. Forf an admin and manager lists all shifts between those dates. Shifts are seperated into past and upcoming
+
+### HTTP Request
+
+`GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift?start="{date:yyyy=mm=dd}"&end="{date:yyyy=mm=dd}"`
+
+```shell
+curl --location --request GET 'http://sandbox-api.brighthr.com/v1/rota/shift' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+{
+    "upcomingShifts": [
+      {
+        "start": "2021-07-13T09:00:00+01",
+        "end": "2021-07-13T17:00:00+01",
+        "breakDuration": {
+            "hours": 0,
+            "minutes": 0
+        },
+        "duration": {
+            "hours": 8,
+            "minutes": 0
+        },
+        "notes": "",
+        "shiftStatus": "Accepted",
+        "id": 200,
+        "shiftGuid": "6fb7e292-74a4-453b-bdab-62575c56adb4"
+      }
+    ],
+    "pastShifts": [
+        {
+            "start": "2021-05-13T09:00:00+01",
+            "end": "2021-05-13T17:00:00+01",
+            "breakDuration": {
+                "hours": 0,
+                "minutes": 0
+            },
+            "duration": {
+                "hours": 8,
+                "minutes": 0
+            },
+            "notes": "",
+            "shiftStatus": "Accepted",
+            "id": 200,
+            "shiftGuid": "5fb7e292-74a4-453b-bdab-62575c56adb4"
+        }
+    ]
+}
+```
+### Permissions
+
+Admins and managers have the ability to view all shifts, employees will only view their own shifts
 
 </br>
 </br>
