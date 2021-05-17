@@ -35,7 +35,7 @@ curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota' \
     "inProgress": true,
     "employeeCount": 1,
     "totalShiftDuration": {
-        "hours": 8,
+        "hours": 0,
         "minutes": 0
     },
     "_links": {
@@ -153,6 +153,30 @@ Parameter | Description
 --------- | -----------
 rotaId | The Guid Id of the rota you want to copy
 
+## Delete Rota
+
+Deletes a rota.
+
+### HTTP Request
+
+`DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "name":"Test Rota",
+      "startLocalDate":"2021-05-17",
+      "duration":7
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Admins and managers have the ability to delete rotas. 
 
 ## Copy Rota
 
