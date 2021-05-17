@@ -340,6 +340,18 @@
                   <li>
                     <a href="#copy-period" class="toc-h2 toc-link" data-title="Copy Period">Copy Period</a>
                   </li>
+                  <li>
+                    <a href="#extend-rota" class="toc-h2 toc-link" data-title="Extend Rota">Extend Rota</a>
+                  </li>
+                  <li>
+                    <a href="#shorten-rota" class="toc-h2 toc-link" data-title="Shorten Rota">Shorten Rota</a>
+                  </li>
+                  <li>
+                    <a href="#publish-rota" class="toc-h2 toc-link" data-title="Publish Rota">Publish Rota</a>
+                  </li>
+                  <li>
+                    <a href="#unpublish-rota" class="toc-h2 toc-link" data-title="Unpublish Rota">Unpublish Rota</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1527,11 +1539,115 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>copyNotes</td>
-<td>Boolean value indicating if notes should be copied from the shifts in the period being copied from to the shifts created in teh new period</td>
+<td>Boolean value indicating if notes should be copied from the shifts in the period being copied from to the shifts created in the new period</td>
 </tr>
 <tr>
 <td>indexOfRotaPeriodToCopy</td>
 <td>An zero based integer index of periods within the rota. For example, to copy the first week set this value to 0.</td>
+</tr>
+</tbody></table>
+<h2 id='extend-rota'>Extend Rota</h2>
+<p>Extends a rota by its period duration. For example a rota that is a week long, that is with a period of 7, adds another 7 days to the end of the rota.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-6'>Permissions</h3>
+<p>Admins and managers have the ability to extend rotas. </p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The Guid Id of the rota you want to copy</td>
+</tr>
+</tbody></table>
+<h2 id='shorten-rota'>Shorten Rota</h2>
+<p>Shortens a rota by its period duration. For a rota with a repeating period of 7, removes the last 7 days including all shifts that start in those days.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-7'>Permissions</h3>
+<p>Admins and managers have the ability to extend rotas. </p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The Guid Id of the rota you want to copy</td>
+</tr>
+</tbody></table>
+<h2 id='publish-rota'>Publish Rota</h2>
+<p>Publishes a rota. This makes the rota visible to employees, and sends notifications about their shifts to them.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/publish</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/publish'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-8'>Permissions</h3>
+<p>Admins and managers have the ability to publish rotas. </p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The Guid Id of the rota you want to copy</td>
+</tr>
+</tbody></table>
+<h2 id='unpublish-rota'>Unpublish Rota</h2>
+<p>Publishes a rota. This makes the rota invisible to employees, and sends notifications about their shifts to them.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/unpublish</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/unpublish'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-9'>Permissions</h3>
+<p>Admins and managers have the ability to publish rotas. </p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The Guid Id of the rota you want to copy</td>
 </tr>
 </tbody></table>
 
