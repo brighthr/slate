@@ -355,6 +355,15 @@
                   <li>
                     <a href="#rename-rota" class="toc-h2 toc-link" data-title="Rename Rota">Rename Rota</a>
                   </li>
+                  <li>
+                    <a href="#accept-shift" class="toc-h2 toc-link" data-title="Accept Shift">Accept Shift</a>
+                  </li>
+                  <li>
+                    <a href="#accept-shift-2" class="toc-h2 toc-link" data-title="Accept Shift">Accept Shift</a>
+                  </li>
+                  <li>
+                    <a href="#delete-rota-2" class="toc-h2 toc-link" data-title="Delete Rota">Delete Rota</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1357,7 +1366,7 @@ The above command returns JSON structured like this:</p>
 <p>Retrieves a Rota by its unique identifier.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}</code></p>
-<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 </code></pre>
@@ -1432,21 +1441,16 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>rotaId</td>
-<td>The Guid Id of the rota you want to copy</td>
+<td>The unique identifier of the rota</td>
 </tr>
 </tbody></table>
 <h2 id='delete-rota'>Delete Rota</h2>
 <p>Deletes a rota.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}</code></p>
-<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl --location --request DELETE <span class="s1">'http://sandbox-api.brighthr.com/v1/rota'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  --data-raw <span class="s1">'{
-      "name":"Test Rota",
-      "startLocalDate":"2021-05-17",
-      "duration":7
-    }'</span>
 </code></pre>
 <blockquote>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
@@ -1530,7 +1534,7 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>rotaGuid</td>
-<td>The Guid Id of the rota you want to copy</td>
+<td>The unique identifier of the rota</td>
 </tr>
 </tbody></table>
 <h3 id='body-parameters-3'>Body parameters</h3>
@@ -1572,7 +1576,7 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>rotaId</td>
-<td>The Guid Id of the rota you want to copy</td>
+<td>The unique identifier of the rota</td>
 </tr>
 </tbody></table>
 <h2 id='shorten-rota'>Shorten Rota</h2>
@@ -1598,7 +1602,7 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>rotaId</td>
-<td>The Guid Id of the rota you want to copy</td>
+<td>The unique identifier of the rota</td>
 </tr>
 </tbody></table>
 <h2 id='publish-rota'>Publish Rota</h2>
@@ -1624,7 +1628,7 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>rotaId</td>
-<td>The Guid Id of the rota you want to copy</td>
+<td>The unique identifier of the rota</td>
 </tr>
 </tbody></table>
 <h2 id='unpublish-rota'>Unpublish Rota</h2>
@@ -1650,7 +1654,7 @@ The above command returns JSON structured like this:</p>
 </thead><tbody>
 <tr>
 <td>rotaId</td>
-<td>The Guid Id of the rota you want to copy</td>
+<td>The unique identifier of the rota</td>
 </tr>
 </tbody></table>
 <h2 id='rename-rota'>Rename Rota</h2>
@@ -1678,8 +1682,8 @@ The above command returns JSON structured like this:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>rotaGuid</td>
-<td>The Guid Id of the rota you want to copy</td>
+<td>rotaId</td>
+<td>The unique identifier of the rota</td>
 </tr>
 </tbody></table>
 <h3 id='body-parameters-4'>Body parameters</h3>
@@ -1694,6 +1698,80 @@ The above command returns JSON structured like this:</p>
 <td>A string of no more than 50 characters. Contains the new name of the rota. It must leave the rota with a unique name and start date combination.</td>
 </tr>
 </tbody></table>
+<h2 id='accept-shift'>Accept Shift</h2>
+<p>Accepts and a shift that&#39;s in the pending state. This can only be done on a published rota.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/Shift/{shiftId:guid}/Accept</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/Shift/{shiftId:guid}/Accept'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-11'>Permissions</h3>
+<p>An employee can only accept their own shifts. </p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The unique identifier of the rota</td>
+</tr>
+<tr>
+<td>shiftId</td>
+<td>The unique identifier of the shift to be accepted</td>
+</tr>
+</tbody></table>
+<h2 id='accept-shift-2'>Accept Shift</h2>
+<p>Declines a shift that&#39;s in the pending state. This can only be done on a published rota.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}/decline</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}/decline'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-12'>Permissions</h3>
+<p>An employee can only decline their own shifts. </p>
+<h3 id='url-parameters-10'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The unique identifier of the rota</td>
+</tr>
+<tr>
+<td>shiftId</td>
+<td>The unique identifier of the shift to be declined</td>
+</tr>
+</tbody></table>
+<h2 id='delete-rota-2'>Delete Rota</h2>
+<p>Deletes a shift.</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request DELETE <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-13'>Permissions</h3>
+<p>Admins and managers have the ability to delete rotas. </p>
 
 <p></br>
 </br>
