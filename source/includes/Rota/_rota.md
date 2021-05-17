@@ -2,6 +2,85 @@
 
 The Rota API allows you to fetch or create rotas and shifts.
 
+## Copy Rota
+
+Creates a new rota with shifts copied from a specified rota.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "startDate": "2020-12-01",
+      "name": "New Rota"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+  {
+    "id": "532E179F-3316-49B3-AB12-8FCF50FD7A28"
+  }
+```
+### Permissions
+
+Admins and managers have the ability to create copied rotas. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+RotaToCopyId | The unique identifier of the rota you want to copy
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+StartDate | Start Date of the new rota
+Name | A unique name for the new rota
+
+## Copy Period
+
+Creates a rota's repeating period with shifts copied from the specified period. A period is a repeating number of days, which defults to 7 days.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "copyNotes": true,
+      "indexOfRotaPeriodToCopy": 1
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Admins and managers have the ability to create copied rotas. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaGuid | The unique identifier of the rota
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+copyNotes | Boolean value indicating if notes should be copied from the shifts in the period being copied from to the shifts created in the new period
+indexOfRotaPeriodToCopy | An zero based integer index of periods within the rota. For example, to copy the first week set this value to 0.
+
 ## Create Rota
 
 Creates a new rota.
@@ -68,6 +147,58 @@ Parameter | Description
 Name | A unique name for the new rota
 StartDate | The start date of the rota
 Duration | The number of days for the rota's repeating period. For a rota that repeats every week use a value of 7.
+
+## Delete Rota
+
+Deletes a rota.
+
+### HTTP Request
+
+`DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}`
+
+```shell
+curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Admins and managers have the ability to delete rotas. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaId | The unique identifier of the rota to delete
+
+## Extend Rota
+
+Extends a rota by its period duration. For example a rota that is a week long, that is with a period of 7, adds another 7 days to the end of the rota.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Admins and managers have the ability to extend rotas. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaId | The unique identifier of the rota to extend
 
 ## Get Rota
 
@@ -153,16 +284,16 @@ Parameter | Description
 --------- | -----------
 rotaId | The unique identifier of the rota
 
-## Delete Rota
+## Publish Rota
 
-Deletes a rota.
+Publishes a rota. This makes the rota visible to employees, and sends notifications about their shifts to them.
 
 ### HTTP Request
 
-`DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}`
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/publish`
 
 ```shell
-curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota' \
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/publish' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
 ```
@@ -171,106 +302,7 @@ curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota' \
 
 ### Permissions
 
-Admins and managers have the ability to delete rotas. 
-
-## Copy Rota
-
-Creates a new rota with shifts copied from a specified rota.
-
-### HTTP Request
-
-`POST https://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy`
-
-```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy' \
-  --header "Authorization: Bearer Access-Token"
-  --header 'Content-Type: application/json' \
-  --data-raw '{
-      "startDate": "2020-12-01",
-      "name": "New Rota"
-    }'
-```
-> Make sure to replace `Access-Token` with your client key.
-> The above command returns JSON structured like this:
-
-```json
-  {
-    "id": "532E179F-3316-49B3-AB12-8FCF50FD7A28"
-  }
-```
-### Permissions
-
-Admins and managers have the ability to create copied rotas. 
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-RotaToCopyId | The Guid Id of the rota you want to copy
-
-### Body parameters
-
-Parameter | Description
---------- | -----------
-StartDate | Start Date of the new rota
-Name | A unique name for the new rota
-
-## Copy Period
-
-Creates a rota's repeating period with shifts copied from the specified period. A period is a repeating number of days, which defults to 7 days.
-
-### HTTP Request
-
-`POST https://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period`
-
-```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period' \
-  --header "Authorization: Bearer Access-Token"
-  --header 'Content-Type: application/json' \
-  --data-raw '{
-      "copyNotes": true,
-      "indexOfRotaPeriodToCopy": 1
-    }'
-```
-> Make sure to replace `Access-Token` with your client key.
-> The above command returns JSON structured like this:
-
-### Permissions
-
-Admins and managers have the ability to create copied rotas. 
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-rotaGuid | The unique identifier of the rota
-
-### Body parameters
-
-Parameter | Description
---------- | -----------
-copyNotes | Boolean value indicating if notes should be copied from the shifts in the period being copied from to the shifts created in the new period
-indexOfRotaPeriodToCopy | An zero based integer index of periods within the rota. For example, to copy the first week set this value to 0.
-
-## Extend Rota
-
-Extends a rota by its period duration. For example a rota that is a week long, that is with a period of 7, adds another 7 days to the end of the rota.
-
-### HTTP Request
-
-`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend`
-
-```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/extend' \
-  --header "Authorization: Bearer Access-Token"
-  --header 'Content-Type: application/json' \
-```
-> Make sure to replace `Access-Token` with your client key.
-> The above command returns JSON structured like this:
-
-### Permissions
-
-Admins and managers have the ability to extend rotas. 
+Admins and managers have the ability to publish rotas. 
 
 ### URL Parameters
 
@@ -297,32 +329,6 @@ curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:
 ### Permissions
 
 Admins and managers have the ability to extend rotas. 
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-rotaId | The unique identifier of the rota
-
-## Publish Rota
-
-Publishes a rota. This makes the rota visible to employees, and sends notifications about their shifts to them.
-
-### HTTP Request
-
-`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/publish`
-
-```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/publish' \
-  --header "Authorization: Bearer Access-Token"
-  --header 'Content-Type: application/json' \
-```
-> Make sure to replace `Access-Token` with your client key.
-> The above command returns JSON structured like this:
-
-### Permissions
-
-Admins and managers have the ability to publish rotas. 
 
 ### URL Parameters
 
@@ -418,7 +424,7 @@ Parameter | Description
 rotaId | The unique identifier of the rota
 shiftId | The unique identifier of the shift to be accepted
 
-## Accept Shift 
+## Decline Shift 
 
 Declines a shift that's in the pending state. This can only be done on a published rota.
 
@@ -445,7 +451,7 @@ Parameter | Description
 rotaId | The unique identifier of the rota
 shiftId | The unique identifier of the shift to be declined
 
-## Delete Rota
+## Delete Shift
 
 Deletes a shift.
 
@@ -465,7 +471,7 @@ curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota/{rotaI
 
 Admins and managers can delete shifts. 
 
-## Get Rota
+## Get Shifts
 
 Retrieves a shift by its unique identifier.
 
@@ -510,7 +516,7 @@ Parameter | Description
 rotaId | The unique identifier of the rota
 rotaId | The unique identifier of the shift
 
-## List Rota
+## List Shifts
 
 Lists all shifts that an employee participates in within the span of dates given by the query parameters. Forf an admin and manager lists all shifts between those dates. Shifts are seperated into past and upcoming
 
