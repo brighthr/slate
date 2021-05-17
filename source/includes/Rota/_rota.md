@@ -361,6 +361,40 @@ Parameter | Description
 --------- | -----------
 rotaId | The Guid Id of the rota you want to copy
 
+## Rename Rota
+
+Creates a rota's repeating period with shifts copied from the specified period. A period is a repeating number of days, which defults to 7 days.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/rename`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/rename' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "name": "A name"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Admins and managers have the ability to rename rotas. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaGuid | The Guid Id of the rota you want to copy
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+Name | A string of no more than 50 characters. Contains the new name of the rota. It must leave the rota with a unique name and start date combination.
 
 </br>
 </br>
