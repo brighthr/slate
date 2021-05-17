@@ -364,6 +364,12 @@
                   <li>
                     <a href="#delete-rota-2" class="toc-h2 toc-link" data-title="Delete Rota">Delete Rota</a>
                   </li>
+                  <li>
+                    <a href="#get-rota-2" class="toc-h2 toc-link" data-title="Get Rota">Get Rota</a>
+                  </li>
+                  <li>
+                    <a href="#list-rota" class="toc-h2 toc-link" data-title="List Rota">List Rota</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1771,7 +1777,105 @@ The above command returns JSON structured like this:</p>
 The above command returns JSON structured like this:</p>
 </blockquote>
 <h3 id='permissions-13'>Permissions</h3>
-<p>Admins and managers have the ability to delete rotas. </p>
+<p>Admins and managers can delete shifts. </p>
+<h2 id='get-rota-2'>Get Rota</h2>
+<p>Retrieves a shift by its unique identifier.</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftGuid:guid}</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftGuid:guid}'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-13T09:00:00+01"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-13T17:00:00+01"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"breakDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shiftStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shiftGuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='permissions-14'>Permissions</h3>
+<p>Admins and managers have the ability to view all shifts, and employees can see shifts on rotas they are assigned to. </p>
+<h3 id='url-parameters-11'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The unique identifier of the rota</td>
+</tr>
+<tr>
+<td>rotaId</td>
+<td>The unique identifier of the shift</td>
+</tr>
+</tbody></table>
+<h2 id='list-rota'>List Rota</h2>
+<p>Lists all shifts that an employee participates in within the span of dates given by the query parameters. Forf an admin and manager lists all shifts between those dates. Shifts are seperated into past and upcoming</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift?start=&quot;{date:yyyy=mm=dd}&quot;&amp;end=&quot;{date:yyyy=mm=dd}&quot;</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/shift'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"upcomingShifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-13T09:00:00+01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-13T17:00:00+01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"breakDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shiftStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shiftGuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"pastShifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-13T09:00:00+01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-13T17:00:00+01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"breakDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shiftStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shiftGuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='permissions-15'>Permissions</h3>
+<p>Admins and managers have the ability to view all shifts, employees will only view their own shifts</p>
 
 <p></br>
 </br>
