@@ -328,6 +328,9 @@
                   <li>
                     <a href="#copy-rota" class="toc-h2 toc-link" data-title="Copy Rota">Copy Rota</a>
                   </li>
+                  <li>
+                    <a href="#copy-period" class="toc-h2 toc-link" data-title="Copy Period">Copy Period</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1302,6 +1305,55 @@ The above command returns JSON structured like this:</p>
 <tr>
 <td>Name</td>
 <td>A unique name for the new rota</td>
+</tr>
+</tbody></table>
+<h2 id='copy-period'>Copy Period</h2>
+<p>Creates a rota&#39;s repeating period with shifts copied from the specified period. A period is a repeating number of days, which defults to 7 days.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'{
+      "copyNotes": true,
+      "indexOfRotaPeriodToCopy": 1
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532E179F-3316-49B3-AB12-8FCF50FD7A28"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='permissions-2'>Permissions</h3>
+<p>Admins and managers have the ability to create copied rotas. </p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaGuid</td>
+<td>The Guid Id of the rota you want to copy</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>copyNotes</td>
+<td>Boolean value indicating if notes should be copied from the shifts in the period being copied from to the shifts created in teh new period</td>
+</tr>
+<tr>
+<td>indexOfRotaPeriodToCopy</td>
+<td>An zero based integer index of periods within the rota. For example, to copy the first week set this value to 0.</td>
 </tr>
 </tbody></table>
 
