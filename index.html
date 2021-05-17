@@ -352,6 +352,9 @@
                   <li>
                     <a href="#unpublish-rota" class="toc-h2 toc-link" data-title="Unpublish Rota">Unpublish Rota</a>
                   </li>
+                  <li>
+                    <a href="#rename-rota" class="toc-h2 toc-link" data-title="Rename Rota">Rename Rota</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1648,6 +1651,47 @@ The above command returns JSON structured like this:</p>
 <tr>
 <td>rotaId</td>
 <td>The Guid Id of the rota you want to copy</td>
+</tr>
+</tbody></table>
+<h2 id='rename-rota'>Rename Rota</h2>
+<p>Creates a rota&#39;s repeating period with shifts copied from the specified period. A period is a repeating number of days, which defults to 7 days.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/rename</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/rename'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'{
+      "name": "A name"
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<h3 id='permissions-10'>Permissions</h3>
+<p>Admins and managers have the ability to rename rotas. </p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaGuid</td>
+<td>The Guid Id of the rota you want to copy</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-4'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Name</td>
+<td>A string of no more than 50 characters. Contains the new name of the rota. It must leave the rota with a unique name and start date combination.</td>
 </tr>
 </tbody></table>
 
