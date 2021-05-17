@@ -326,6 +326,9 @@
             <a href="#rota" class="toc-h1 toc-link" data-title="Rota">Rota</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-rota" class="toc-h2 toc-link" data-title="Get Rota">Get Rota</a>
+                  </li>
+                  <li>
                     <a href="#copy-rota" class="toc-h2 toc-link" data-title="Copy Rota">Copy Rota</a>
                   </li>
                   <li>
@@ -1258,9 +1261,95 @@ The Report API allows you to generate reports for your company.</p>
 </br></p>
 <h1 id='rota'>Rota</h1>
 <p>The Rota API allows you to fetch or create rotas and shifts.</p>
+<h2 id='get-rota'>Get Rota</h2>
+<p>Retrieves a Rota by its unique identifier.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'{
+      "startDate": "2020-12-01",
+      "name": "New Rota"
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">580001</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5760d2ed-447b-4c88-af21-227f572f7d8b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Rota"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-13"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"initialDuration"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inProgress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employeeCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalShiftDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"shifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-13T09:00:00+01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-13T17:00:00+01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"breakDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shiftStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shiftGuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rota/5760d2ed-447b-4c88-af21-227f572f7d8b/shift/5fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"get"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"update"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rota/5760d2ed-447b-4c88-af21-227f572f7d8b/shift/5fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"put"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"delete"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rota/5760d2ed-447b-4c88-af21-227f572f7d8b/shift/5fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delete"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rota/5760d2ed-447b-4c88-af21-227f572f7d8b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"get"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"unpublish"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rota/5760d2ed-447b-4c88-af21-227f572f7d8b/unpublish"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='permissions'>Permissions</h3>
+<p>Admins and managers have the ability to create copied rotas. </p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rotaId</td>
+<td>The Guid Id of the rota you want to copy</td>
+</tr>
+</tbody></table>
 <h2 id='copy-rota'>Copy Rota</h2>
 <p>Creates a new rota with shifts copied from a specified rota.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaToCopyId:guid}/copy'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1277,9 +1366,9 @@ The above command returns JSON structured like this:</p>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532E179F-3316-49B3-AB12-8FCF50FD7A28"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='permissions'>Permissions</h3>
+</span></code></pre><h3 id='permissions-2'>Permissions</h3>
 <p>Admins and managers have the ability to create copied rotas. </p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1309,7 +1398,7 @@ The above command returns JSON structured like this:</p>
 </tbody></table>
 <h2 id='copy-period'>Copy Period</h2>
 <p>Creates a rota&#39;s repeating period with shifts copied from the specified period. A period is a repeating number of days, which defults to 7 days.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1323,12 +1412,9 @@ The above command returns JSON structured like this:</p>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532E179F-3316-49B3-AB12-8FCF50FD7A28"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='permissions-2'>Permissions</h3>
+<h3 id='permissions-3'>Permissions</h3>
 <p>Admins and managers have the ability to create copied rotas. </p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
