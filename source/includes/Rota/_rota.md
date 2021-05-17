@@ -78,7 +78,7 @@ Retrieves a Rota by its unique identifier.
 `GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}`
 
 ```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}' \
+curl --location --request GET 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
 ```
@@ -151,7 +151,7 @@ Admins and managers have the ability to create copied rotas.
 
 Parameter | Description
 --------- | -----------
-rotaId | The Guid Id of the rota you want to copy
+rotaId | The unique identifier of the rota
 
 ## Delete Rota
 
@@ -162,14 +162,9 @@ Deletes a rota.
 `DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}`
 
 ```shell
-curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota' \
+curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
-  --data-raw '{
-      "name":"Test Rota",
-      "startLocalDate":"2021-05-17",
-      "duration":7
-    }'
 ```
 > Make sure to replace `Access-Token` with your client key.
 > The above command returns JSON structured like this:
@@ -248,7 +243,7 @@ Admins and managers have the ability to create copied rotas.
 
 Parameter | Description
 --------- | -----------
-rotaGuid | The Guid Id of the rota you want to copy
+rotaGuid | The unique identifier of the rota
 
 ### Body parameters
 
@@ -281,7 +276,7 @@ Admins and managers have the ability to extend rotas.
 
 Parameter | Description
 --------- | -----------
-rotaId | The Guid Id of the rota you want to copy
+rotaId | The unique identifier of the rota
 
 ## Shorten Rota
 
@@ -307,7 +302,7 @@ Admins and managers have the ability to extend rotas.
 
 Parameter | Description
 --------- | -----------
-rotaId | The Guid Id of the rota you want to copy
+rotaId | The unique identifier of the rota
 
 ## Publish Rota
 
@@ -333,7 +328,7 @@ Admins and managers have the ability to publish rotas.
 
 Parameter | Description
 --------- | -----------
-rotaId | The Guid Id of the rota you want to copy
+rotaId | The unique identifier of the rota
 
 ## Unpublish Rota
 
@@ -359,7 +354,7 @@ Admins and managers have the ability to publish rotas.
 
 Parameter | Description
 --------- | -----------
-rotaId | The Guid Id of the rota you want to copy
+rotaId | The unique identifier of the rota
 
 ## Rename Rota
 
@@ -388,13 +383,88 @@ Admins and managers have the ability to rename rotas.
 
 Parameter | Description
 --------- | -----------
-rotaGuid | The Guid Id of the rota you want to copy
+rotaId | The unique identifier of the rota
 
 ### Body parameters
 
 Parameter | Description
 --------- | -----------
 Name | A string of no more than 50 characters. Contains the new name of the rota. It must leave the rota with a unique name and start date combination.
+
+## Accept Shift 
+
+Accepts and a shift that's in the pending state. This can only be done on a published rota.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/Shift/{shiftId:guid}/Accept`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/Shift/{shiftId:guid}/Accept' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+An employee can only accept their own shifts. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaId | The unique identifier of the rota
+shiftId | The unique identifier of the shift to be accepted
+
+## Accept Shift 
+
+Declines a shift that's in the pending state. This can only be done on a published rota.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}/decline`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}/decline' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+An employee can only decline their own shifts. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaId | The unique identifier of the rota
+shiftId | The unique identifier of the shift to be declined
+
+## Delete Rota
+
+Deletes a shift.
+
+### HTTP Request
+
+`DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}`
+
+```shell
+curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+### Permissions
+
+Admins and managers have the ability to delete rotas. 
+
 
 </br>
 </br>
