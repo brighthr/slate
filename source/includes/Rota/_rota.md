@@ -2,6 +2,95 @@
 
 The Rota API allows you to fetch or create rotas and shifts.
 
+## Get Rota
+
+Retrieves a Rota by its unique identifier.
+
+### HTTP Request
+
+`GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "startDate": "2020-12-01",
+      "name": "New Rota"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 580001,
+    "guid": "5760d2ed-447b-4c88-af21-227f572f7d8b",
+    "name": "Test Rota",
+    "startDate": "2021-05-13",
+    "duration": 7,
+    "initialDuration": 7,
+    "published": true,
+    "inProgress": true,
+    "employeeCount": 1,
+    "totalShiftDuration": {
+        "hours": 8,
+        "minutes": 0
+    },
+    "shifts": [
+        {
+            "start": "2021-05-13T09:00:00+01",
+            "end": "2021-05-13T17:00:00+01",
+            "breakDuration": {
+                "hours": 0,
+                "minutes": 0
+            },
+            "duration": {
+                "hours": 8,
+                "minutes": 0
+            },
+            "notes": "",
+            "shiftStatus": "Accepted",
+            "id": 200,
+            "shiftGuid": "5fb7e292-74a4-453b-bdab-62575c56adb4",
+            "_links": {
+                "self": {
+                    "href": "rota/5760d2ed-447b-4c88-af21-227f572f7d8b/shift/5fb7e292-74a4-453b-bdab-62575c56adb4",
+                    "method": "get"
+                },
+                "update": {
+                    "href": "rota/5760d2ed-447b-4c88-af21-227f572f7d8b/shift/5fb7e292-74a4-453b-bdab-62575c56adb4",
+                    "method": "put"
+                },
+                "delete": {
+                    "href": "rota/5760d2ed-447b-4c88-af21-227f572f7d8b/shift/5fb7e292-74a4-453b-bdab-62575c56adb4",
+                    "method": "delete"
+                }
+            }
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "rota/5760d2ed-447b-4c88-af21-227f572f7d8b",
+            "method": "get"
+        },
+        "unpublish": {
+            "href": "rota/5760d2ed-447b-4c88-af21-227f572f7d8b/unpublish"
+        }
+    }
+}
+```
+### Permissions
+
+Admins and managers have the ability to create copied rotas. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaId | The Guid Id of the rota you want to copy
+
+
 ## Copy Rota
 
 Creates a new rota with shifts copied from a specified rota.
@@ -64,11 +153,6 @@ curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaGui
 > Make sure to replace `Access-Token` with your client key.
 > The above command returns JSON structured like this:
 
-```json
-  {
-    "id": "532E179F-3316-49B3-AB12-8FCF50FD7A28"
-  }
-```
 ### Permissions
 
 Admins and managers have the ability to create copied rotas. 
