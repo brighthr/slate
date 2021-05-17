@@ -2,6 +2,73 @@
 
 The Rota API allows you to fetch or create rotas and shifts.
 
+## Create Rota
+
+Creates a new rota.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "name":"Test Rota",
+      "startLocalDate":"2021-05-17",
+      "duration":7
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 580001,
+    "guid": "5760d2ed-447b-4c88-af21-227f572f7d8b",
+    "name": "Test Rota",
+    "startDate": "2021-05-13",
+    "duration": 7,
+    "initialDuration": 7,
+    "published": true,
+    "inProgress": true,
+    "employeeCount": 1,
+    "totalShiftDuration": {
+        "hours": 8,
+        "minutes": 0
+    },
+    "_links": {
+      "self": {
+        "href": "rota/216426a6-8e66-42ac-95fd-f5742876d698"
+      },
+      "http://api.brighthr.com/rels/shift": {
+        "href": "rota/216426a6-8e66-42ac-95fd-f5742876d698/Shift"
+      },
+      "http://api.brighthr.com/rels/publish": {
+        "href": "rota/216426a6-8e66-42ac-95fd-f5742876d698/Publication"
+      },
+      "http://api.brighthr.com/rels/extend": {
+        "href": "rota/216426a6-8e66-42ac-95fd-f5742876d698/Extension"
+      },
+      "http://api.brighthr.com/rels/week": {
+        "href": "rota/216426a6-8e66-42ac-95fd-f5742876d698/Week"
+      }
+    }
+}
+```
+### Permissions
+
+Admins and managers have the ability to create rotas. 
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+Name | A unique name for the new rota
+StartDate | The start date of the rota
+Duration | The number of days for the rota's repeating period. For a rota that repeats every week use a value of 7.
+
 ## Get Rota
 
 Retrieves a Rota by its unique identifier.
@@ -14,10 +81,6 @@ Retrieves a Rota by its unique identifier.
 curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
-  --data-raw '{
-      "startDate": "2020-12-01",
-      "name": "New Rota"
-    }'
 ```
 > Make sure to replace `Access-Token` with your client key.
 > The above command returns JSON structured like this:
