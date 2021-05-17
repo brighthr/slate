@@ -44,6 +44,48 @@ Parameter | Description
 StartDate | Start Date of the new rota
 Name | A unique name for the new rota
 
+## Copy Period
+
+Creates a rota's repeating period with shifts copied from the specified period. A period is a repeating number of days, which defults to 7 days.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaGuid:guid}/period' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "copyNotes": true,
+      "indexOfRotaPeriodToCopy": 1
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+  {
+    "id": "532E179F-3316-49B3-AB12-8FCF50FD7A28"
+  }
+```
+### Permissions
+
+Admins and managers have the ability to create copied rotas. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+rotaGuid | The Guid Id of the rota you want to copy
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+copyNotes | Boolean value indicating if notes should be copied from the shifts in the period being copied from to the shifts created in teh new period
+indexOfRotaPeriodToCopy | An zero based integer index of periods within the rota. For example, to copy the first week set this value to 0.
+
 </br>
 </br>
 </br>
