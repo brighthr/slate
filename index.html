@@ -356,6 +356,9 @@
                     <a href="#rename-rota" class="toc-h2 toc-link" data-title="Rename Rota">Rename Rota</a>
                   </li>
                   <li>
+                    <a href="#schedule-shift" class="toc-h2 toc-link" data-title="Schedule Shift">Schedule Shift</a>
+                  </li>
+                  <li>
                     <a href="#accept-shift" class="toc-h2 toc-link" data-title="Accept Shift">Accept Shift</a>
                   </li>
                   <li>
@@ -1719,9 +1722,72 @@ The above command returns JSON structured like this:</p>
 <td>A string of no more than 50 characters. Contains the new name of the rota. It must leave the rota with a unique name and start date combination.</td>
 </tr>
 </tbody></table>
+<h2 id='schedule-shift'>Schedule Shift</h2>
+<p>Creates a new shift on a given rota.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift</code></p>
+<pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift'</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer Access-Token"</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --data-raw <span class="s1">'{
+      "startLocalDateTime":"2021-05-17 09:00:00",
+      "endLocalDateTime":"2021-05-17 17:30:00",
+      "participants": [
+        {
+          "id": 1,
+          "guid": "5760d2ed-447b-4c88-af21-227f572f7d8b",
+          "name": "Shift Participant"
+        },
+      ],
+      "breakDuration":
+      {
+        "hours": 0,
+        "minutes": 45
+      }
+      "notes": "shift notes",
+
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>Access-Token</code> with your client key.
+The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"5760d2ed-447b-4c88-af21-227f572f7d8b"</span><span class="p">,</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='permissions-11'>Permissions</h3>
+<p>Admins and managers have the ability to schedule shifts.</p>
+<h3 id='body-parameters-5'>Body parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>StartLocalDateTime</td>
+<td>The start date and time of the shift</td>
+</tr>
+<tr>
+<td>EndLocalDateTime</td>
+<td>The end date and time of the shift</td>
+</tr>
+<tr>
+<td>Participants</td>
+<td>A collection of employees to be scheduled on a shift</td>
+</tr>
+<tr>
+<td>BreakDuration</td>
+<td>The duration of break time on the shift</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Notes on a shift</td>
+</tr>
+</tbody></table>
 <h2 id='accept-shift'>Accept Shift</h2>
 <p>Accepts and a shift that&#39;s in the pending state. This can only be done on a published rota.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/Shift/{shiftId:guid}/Accept</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/Shift/{shiftId:guid}/Accept'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1731,7 +1797,7 @@ The above command returns JSON structured like this:</p>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns JSON structured like this:</p>
 </blockquote>
-<h3 id='permissions-11'>Permissions</h3>
+<h3 id='permissions-12'>Permissions</h3>
 <p>An employee can only accept their own shifts. </p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -1751,7 +1817,7 @@ The above command returns JSON structured like this:</p>
 </tbody></table>
 <h2 id='decline-shift'>Decline Shift</h2>
 <p>Declines a shift that&#39;s in the pending state. This can only be done on a published rota.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}/decline</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request POST <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}/decline'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1761,7 +1827,7 @@ The above command returns JSON structured like this:</p>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns JSON structured like this:</p>
 </blockquote>
-<h3 id='permissions-12'>Permissions</h3>
+<h3 id='permissions-13'>Permissions</h3>
 <p>An employee can only decline their own shifts. </p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
@@ -1781,7 +1847,7 @@ The above command returns JSON structured like this:</p>
 </tbody></table>
 <h2 id='delete-shift'>Delete Shift</h2>
 <p>Deletes a shift.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request DELETE <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftId:guid}'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1791,11 +1857,11 @@ The above command returns JSON structured like this:</p>
 <p>Make sure to replace <code>Access-Token</code> with your client key.
 The above command returns JSON structured like this:</p>
 </blockquote>
-<h3 id='permissions-13'>Permissions</h3>
+<h3 id='permissions-14'>Permissions</h3>
 <p>Admins and managers can delete shifts. </p>
 <h2 id='get-shifts'>Get Shifts</h2>
 <p>Retrieves a shift by its unique identifier.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftGuid:guid}</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift/{shiftGuid:guid}'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1821,7 +1887,7 @@ The above command returns JSON structured like this:</p>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shiftGuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fb7e292-74a4-453b-bdab-62575c56adb4"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='permissions-14'>Permissions</h3>
+</span></code></pre><h3 id='permissions-15'>Permissions</h3>
 <p>Admins and managers have the ability to view all shifts, and employees can see shifts on rotas they are assigned to. </p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
@@ -1841,7 +1907,7 @@ The above command returns JSON structured like this:</p>
 </tbody></table>
 <h2 id='list-shifts'>List Shifts</h2>
 <p>Lists all shifts that an employee participates in within the span of dates given by the query parameters. Forf an admin and manager lists all shifts between those dates. Shifts are seperated into past and upcoming</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://sandbox-api.brighthr.com/v1/rota/shift?start={date:yyyy-mm-dd}&amp;end={date:yyyy-mm-dd}</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/shift?start={date:yyyy-mm-dd}&amp;end={date:yyyy-mm-dd}'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1889,7 +1955,7 @@ The above command returns JSON structured like this:</p>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='permissions-15'>Permissions</h3>
+</span></code></pre><h3 id='permissions-16'>Permissions</h3>
 <p>Admins and managers have the ability to view all shifts, employees will only view their own shifts</p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -1909,7 +1975,7 @@ The above command returns JSON structured like this:</p>
 </tbody></table>
 <h2 id='get-availability'>Get Availability</h2>
 <p>Retrieves a list of dates and shifts on each of those days.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://sandbox-api.brighthr.com/v1/rota/shift/availability?start={date:yyyy=mm=dd}&amp;end={date:yyyy=mm=dd}&amp;includeUnpublished={bool}</code></p>
 <pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'http://sandbox-api.brighthr.com/v1/rota/shift/availability'</span> <span class="se">\</span>
   --header <span class="s2">"Authorization: Bearer Access-Token"</span>
@@ -1971,7 +2037,7 @@ The above command returns JSON structured like this:</p>
         </span><span class="s2">"shifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='permissions-16'>Permissions</h3>
+</span></code></pre><h3 id='permissions-17'>Permissions</h3>
 <p>Admins and managers have the ability to view all shifts, and employees can see shifts on rotas they are assigned to. </p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
