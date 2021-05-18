@@ -1,6 +1,6 @@
 # Rota
 
-The Rota API allows you to fetch or create rotas and shifts.
+The Rota API allows you to interact with rotas and shifts.
 
 ## Copy Rota
 
@@ -514,7 +514,7 @@ Admins and managers have the ability to view all shifts, and employees can see s
 Parameter | Description
 --------- | -----------
 rotaId | The unique identifier of the rota
-rotaId | The unique identifier of the shift
+shiftId | The unique identifier of the shift
 
 ## List Shifts
 
@@ -522,10 +522,10 @@ Lists all shifts that an employee participates in within the span of dates given
 
 ### HTTP Request
 
-`GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift?start="{date:yyyy=mm=dd}"&end="{date:yyyy=mm=dd}"`
+`GET https://sandbox-api.brighthr.com/v1/rota/shift?start={date:yyyy-mm-dd}&end={date:yyyy-mm-dd}`
 
 ```shell
-curl --location --request GET 'http://sandbox-api.brighthr.com/v1/rota/shift' \
+curl --location --request GET 'http://sandbox-api.brighthr.com/v1/rota/shift?start={date:yyyy-mm-dd}&end={date:yyyy-mm-dd}' \
   --header "Authorization: Bearer Access-Token"
   --header 'Content-Type: application/json' \
 ```
@@ -575,6 +575,95 @@ curl --location --request GET 'http://sandbox-api.brighthr.com/v1/rota/shift' \
 ### Permissions
 
 Admins and managers have the ability to view all shifts, employees will only view their own shifts
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+start | Required. Date representing the start of the range in the format YYYY-mm-dd e.g. 2021-12-31
+end | Required. Date representing the end of the range in the format YYYY-mm-dd e.g. 2021-12-31
+
+## Get Availability
+
+Retrieves a list of dates and shifts on each of those days.
+
+### HTTP Request
+
+`GET https://sandbox-api.brighthr.com/v1/rota/shift/availability?start={date:yyyy=mm=dd}&end={date:yyyy=mm=dd}&includeUnpublished={bool}`
+
+```shell
+curl --location --request GET 'http://sandbox-api.brighthr.com/v1/rota/shift/availability' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+[
+    {
+        "date": "2021-04-26",
+        "shifts": [
+            {
+                "employeeId": 157014,
+                "startDate": "2021-04-26",
+                "startTime": "08:00:00",
+                "endDate": "2021-04-26",
+                "endTime": "16:00:00",
+                "shiftGuid": "165319e0-83f5-4cd6-8e65-537b88f55808",
+                "id": "6829257"
+            },
+            {
+                "employeeId": 4315,
+                "startDate": "2021-04-26",
+                "startTime": "09:00:00",
+                "endDate": "2021-04-26",
+                "endTime": "17:30:00",
+                "shiftGuid": "c6f82baf-ed33-4841-9db2-13cd80e26db9",
+                "id": "6829673"
+            }
+        ]
+    },
+    {
+        "date": "2021-04-27",
+        "shifts": [
+            {
+                "employeeId": 157014,
+                "startDate": "2021-04-27",
+                "startTime": "08:00:00",
+                "endDate": "2021-04-27",
+                "endTime": "16:00:00",
+                "shiftGuid": "ccd91450-5bcc-46f5-af5c-139b676d0a2f",
+                "id": "6829259"
+            },
+            {
+                "employeeId": 4315,
+                "startDate": "2021-04-27",
+                "startTime": "08:00:00",
+                "endDate": "2021-04-27",
+                "endTime": "16:30:00",
+                "shiftGuid": "6d186569-309e-4161-b066-18512b3cf900",
+                "id": "6829724"
+            }
+        ]
+    },
+    {
+        "date": "2021-04-28",
+        "shifts": []
+    }
+]
+```
+### Permissions
+
+Admins and managers have the ability to view all shifts, and employees can see shifts on rotas they are assigned to. 
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+start | Required. Date representing the start of the range in the format YYYY-mm-dd e.g. 2021-12-31
+end | Required. Date representing the end of the range in the format YYYY-mm-dd e.g. 2021-12-31
+includeUnpublished | Optional. `true` or `false`. Includes unpublished rotas if set to true. Defaults to true.
 
 </br>
 </br>
