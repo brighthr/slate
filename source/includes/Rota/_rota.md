@@ -397,6 +397,57 @@ Parameter | Description
 --------- | -----------
 Name | A string of no more than 50 characters. Contains the new name of the rota. It must leave the rota with a unique name and start date combination.
 
+## Schedule Shift
+
+Creates a new shift on a given rota.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift`
+
+```shell
+curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/shift' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "startLocalDateTime":"2021-05-17 09:00:00",
+      "endLocalDateTime":"2021-05-17 17:30:00",
+      "participants": [
+        {
+          "id": 1,
+          "guid": "5760d2ed-447b-4c88-af21-227f572f7d8b",
+          "name": "Shift Participant"
+        },
+      ],
+      "breakDuration":
+      {
+        "hours": 0,
+        "minutes": 45
+      }
+      "notes": "shift notes",
+
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+
+```json
+[
+  "5760d2ed-447b-4c88-af21-227f572f7d8b",
+]
+```
+### Permissions
+
+Admins and managers have the ability to create rotas. 
+
+### Body parameters
+
+Parameter | Description
+--------- | -----------
+Name | A unique name for the new rota
+StartDate | The start date of the rota
+Duration | The number of days for the rota's repeating period. For a rota that repeats every week use a value of 7.
+
 ## Accept Shift 
 
 Accepts and a shift that's in the pending state. This can only be done on a published rota.
