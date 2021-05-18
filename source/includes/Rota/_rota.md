@@ -438,15 +438,17 @@ curl --location --request POST 'http://sandbox-api.brighthr.com/v1/rota/{rotaId:
 ```
 ### Permissions
 
-Admins and managers have the ability to create rotas. 
+Admins and managers have the ability to schedule shifts.
 
 ### Body parameters
 
 Parameter | Description
 --------- | -----------
-Name | A unique name for the new rota
-StartDate | The start date of the rota
-Duration | The number of days for the rota's repeating period. For a rota that repeats every week use a value of 7.
+StartLocalDateTime | The start date and time of the shift
+EndLocalDateTime | The end date and time of the shift
+Participants | A collection of employees to be scheduled on a shift
+BreakDuration | The duration of break time on the shift
+Notes | Notes on a shift
 
 ## Accept Shift 
 
