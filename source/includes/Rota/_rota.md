@@ -162,7 +162,6 @@ curl --location --request DELETE 'http://sandbox-api.brighthr.com/v1/rota' \
   --header 'Content-Type: application/json' \
 ```
 > Make sure to replace `Access-Token` with your client key.
-> The above command returns JSON structured like this:
 
 ### Permissions
 
@@ -173,6 +172,105 @@ Admins and managers have the ability to delete rotas.
 Parameter | Description
 --------- | -----------
 rotaId | The unique identifier of the rota to delete
+
+## Employee - Add
+
+Adds an employee to the list of employees who may be associated with a rota. This is used by clients to associate a subset of employees with the rota.
+
+### HTTP Request
+
+`POST https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/employee/{employeeId:guid}`
+
+```shell
+curl --location --request POST 'https://sandbox-api.brighthr.com/v1/rota/216426a6-8e66-42ac-95fd-f5742876d698/employee/216426a6-8e66-42ac-95fd-f5742876d698' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "startDate": "2020-12-01",
+      "name": "New Rota"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+
+### Permissions
+
+Admins and managers have the ability to add employees. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+RotaId | The unique identifier of the rota you want to copy
+EmployeeId | The unique identifier of the employee
+
+## Employee - List
+
+Adds an employee to the list of employees who may be associated with a rota. This is used by clients to associate a subset of employees with the rota.
+
+### HTTP Request
+
+`GET https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/employee/`
+
+```shell
+curl --location --request GET 'https://sandbox-api.brighthr.com/v1/rota/216426a6-8e66-42ac-95fd-f5742876d698/employee' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "startDate": "2020-12-01",
+      "name": "New Rota"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+> The above command returns JSON structured like this:
+```json
+{
+    "employees":
+    [
+      "216426a6-8e66-42ac-95fd-f5742876d698",
+      "945234a6-8e66-42ac-95fd-f5742876d698"
+    ]
+}
+```
+### Permissions
+
+Admins and managers have the ability to list employees. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+RotaId | The unique identifier of the rota you want to copy
+EmployeeId | The unique identifier of the employee
+
+## Employee - Remove
+
+Removes an employee to the list of employees who may be associated with a rota. This is used by clients to associate a subset of employees with the rota.
+
+### HTTP Request
+
+`DELETE https://sandbox-api.brighthr.com/v1/rota/{rotaId:guid}/employee/{employeeId:guid}`
+
+```shell
+curl --location --request DELETE 'https://sandbox-api.brighthr.com/v1/rota/216426a6-8e66-42ac-95fd-f5742876d698/employee/216426a6-8e66-42ac-95fd-f5742876d698' \
+  --header "Authorization: Bearer Access-Token"
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "startDate": "2020-12-01",
+      "name": "New Rota"
+    }'
+```
+> Make sure to replace `Access-Token` with your client key.
+
+### Permissions
+
+Admins and managers have the ability to remove employees. 
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+RotaId | The unique identifier of the rota you want to copy
+EmployeeId | The unique identifier of the employee
 
 ## Extend Rota
 
